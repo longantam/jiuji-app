@@ -3,196 +3,265 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#171614">
+    android:background="#0F0E0C">
 
+    <!-- TOP BAR -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="58dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:background="#171614">
+        android:paddingEnd="16dp"
+        android:background="#13120F"
+        android:elevation="4dp">
+        <View
+            android:layout_width="3dp"
+            android:layout_height="22dp"
+            android:background="#C9A227"
+            android:layout_marginEnd="10dp"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="九極排盤"
-            android:textColor="#C9A227"
-            android:textSize="22sp"
+            android:textColor="#E8C84A"
+            android:textSize="20sp"
+            android:letterSpacing="0.08"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/tvTabTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="時空排盤"
-            android:textColor="#888888"
-            android:textSize="13sp"/>
+            android:textColor="#6A6860"
+            android:textSize="12sp"
+            android:letterSpacing="0.04"/>
     </LinearLayout>
 
+    <!-- CONTENT AREA -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="56dp"
-        android:layout_marginBottom="56dp">
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="60dp">
 
         <!-- TAB 1: 排盤 -->
         <ScrollView android:id="@+id/pagePaipan"
-            android:layout_width="match_parent" android:layout_height="match_parent">
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:background="#0F0E0C">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical" android:padding="16dp">
+                android:orientation="vertical" android:padding="14dp" android:paddingBottom="20dp">
 
+                <!-- Input Card -->
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="vertical" android:background="#1C1B19" android:padding="16dp">
+                    android:orientation="vertical" android:background="#191813"
+                    android:padding="16dp"
+                    android:layout_marginBottom="2dp">
+
+                    <!-- Card top accent line -->
+                    <View android:layout_width="40dp" android:layout_height="2dp"
+                        android:background="#C9A227" android:layout_marginBottom="12dp"/>
+
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="輸入日期與時間" android:textColor="#888888" android:textSize="12sp"
-                        android:layout_marginBottom="12dp"/>
+                        android:text="輸入日期與時間" android:textColor="#6A6860" android:textSize="11sp"
+                        android:letterSpacing="0.06"
+                        android:layout_marginBottom="14dp"/>
+
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
                             android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="年份（公曆）" android:textColor="#888888" android:textSize="12sp"/>
+                                android:text="年份（公曆）" android:textColor="#6A6860" android:textSize="11sp"
+                                android:layout_marginBottom="4dp"/>
                             <EditText android:id="@+id/etYear" android:layout_width="match_parent"
-                                android:layout_height="48dp" android:background="#2A2926"
-                                android:textColor="#CDCCCA" android:inputType="number"
-                                android:hint="2026" android:textColorHint="#555" android:padding="10dp"/>
+                                android:layout_height="46dp" android:background="#252318"
+                                android:textColor="#E0DDD5" android:inputType="number"
+                                android:hint="2026" android:textColorHint="#3D3C38" android:padding="10dp"
+                                android:textSize="15sp"/>
                         </LinearLayout>
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
                             android:layout_weight="1" android:orientation="vertical">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="月份（公曆）" android:textColor="#888888" android:textSize="12sp"/>
+                                android:text="月份（公曆）" android:textColor="#6A6860" android:textSize="11sp"
+                                android:layout_marginBottom="4dp"/>
                             <EditText android:id="@+id/etMonth" android:layout_width="match_parent"
-                                android:layout_height="48dp" android:background="#2A2926"
-                                android:textColor="#CDCCCA" android:inputType="number"
-                                android:hint="6" android:textColorHint="#555" android:padding="10dp"/>
+                                android:layout_height="46dp" android:background="#252318"
+                                android:textColor="#E0DDD5" android:inputType="number"
+                                android:hint="6" android:textColorHint="#3D3C38" android:padding="10dp"
+                                android:textSize="15sp"/>
                         </LinearLayout>
                     </LinearLayout>
+
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="日期（公曆）" android:textColor="#888888" android:textSize="12sp"
-                        android:layout_marginTop="8dp"/>
+                        android:text="日期（公曆）" android:textColor="#6A6860" android:textSize="11sp"
+                        android:layout_marginTop="10dp" android:layout_marginBottom="4dp"/>
                     <EditText android:id="@+id/etDay" android:layout_width="match_parent"
-                        android:layout_height="48dp" android:background="#2A2926"
-                        android:textColor="#CDCCCA" android:inputType="number"
-                        android:hint="15" android:textColorHint="#555" android:padding="10dp"/>
+                        android:layout_height="46dp" android:background="#252318"
+                        android:textColor="#E0DDD5" android:inputType="number"
+                        android:hint="15" android:textColorHint="#3D3C38" android:padding="10dp"
+                        android:textSize="15sp"/>
+
                     <TextView android:id="@+id/tvLunar" android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:padding="12dp"
-                        android:background="#2A3830" android:textColor="#9ECFCE"
-                        android:textSize="14sp" android:layout_marginTop="8dp" android:visibility="gone"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="小時（選填）" android:textColor="#888888" android:textSize="12sp"
-                        android:layout_marginTop="8dp"/>
-                    <EditText android:id="@+id/etHour" android:layout_width="match_parent"
-                        android:layout_height="48dp" android:background="#2A2926"
-                        android:textColor="#CDCCCA" android:inputType="number"
-                        android:hint="10" android:textColorHint="#555" android:padding="10dp"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="分鐘（選填）" android:textColor="#888888" android:textSize="12sp"
-                        android:layout_marginTop="8dp"/>
-                    <EditText android:id="@+id/etMinute" android:layout_width="match_parent"
-                        android:layout_height="48dp" android:background="#2A2926"
-                        android:textColor="#CDCCCA" android:inputType="number"
-                        android:hint="36" android:textColorHint="#555" android:padding="10dp"/>
-                    <Button android:id="@+id/btnCalc" android:layout_width="match_parent"
-                        android:layout_height="52dp" android:text="排　　盤"
-                        android:textColor="#1A1814" android:textSize="17sp" android:textStyle="bold"
-                        android:backgroundTint="#C9A227" android:layout_marginTop="12dp"/>
-                    <TextView android:id="@+id/tvError" android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:textColor="#FF6B6B"
+                        android:layout_height="wrap_content" android:padding="10dp"
+                        android:background="#1A2820" android:textColor="#7DBDBC"
                         android:textSize="13sp" android:layout_marginTop="8dp" android:visibility="gone"/>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginTop="10dp">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="小時（選填）" android:textColor="#6A6860" android:textSize="11sp"
+                                android:layout_marginBottom="4dp"/>
+                            <EditText android:id="@+id/etHour" android:layout_width="match_parent"
+                                android:layout_height="46dp" android:background="#252318"
+                                android:textColor="#E0DDD5" android:inputType="number"
+                                android:hint="10" android:textColorHint="#3D3C38" android:padding="10dp"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="分鐘（選填）" android:textColor="#6A6860" android:textSize="11sp"
+                                android:layout_marginBottom="4dp"/>
+                            <EditText android:id="@+id/etMinute" android:layout_width="match_parent"
+                                android:layout_height="46dp" android:background="#252318"
+                                android:textColor="#E0DDD5" android:inputType="number"
+                                android:hint="36" android:textColorHint="#3D3C38" android:padding="10dp"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Button android:id="@+id/btnCalc" android:layout_width="match_parent"
+                        android:layout_height="50dp" android:text="排　　盤"
+                        android:textColor="#1A1608" android:textSize="16sp" android:textStyle="bold"
+                        android:letterSpacing="0.1"
+                        android:backgroundTint="#C9A227" android:layout_marginTop="14dp"
+                        android:stateListAnimator="@null"/>
+                    <TextView android:id="@+id/tvError" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:textColor="#E05555"
+                        android:textSize="12sp" android:layout_marginTop="6dp" android:visibility="gone"/>
                 </LinearLayout>
 
                 <!-- RESULTS -->
                 <LinearLayout android:id="@+id/resultSection"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="vertical" android:layout_marginTop="12dp" android:visibility="gone">
+                    android:orientation="vertical" android:layout_marginTop="10dp" android:visibility="gone">
+
+                    <!-- Summary bar -->
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:background="#2A2926" android:padding="14dp" android:orientation="vertical">
+                        android:background="#1F1D15" android:padding="14dp" android:orientation="vertical">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="⊙ 九極排列" android:textColor="#888888" android:textSize="11sp"/>
+                            android:text="⊙ 九極排列" android:textColor="#6A6860" android:textSize="10sp"
+                            android:letterSpacing="0.06"/>
                         <TextView android:id="@+id/tvSummary" android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:textColor="#C9A227"
-                            android:textSize="13sp" android:layout_marginTop="4dp"/>
+                            android:layout_height="wrap_content" android:textColor="#D4AE30"
+                            android:textSize="13sp" android:layout_marginTop="4dp"
+                            android:letterSpacing="0.04"/>
                     </LinearLayout>
+
+                    <!-- Nian/Yue row -->
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="天極·年極 / 地極·月極" android:textColor="#888888"
-                        android:textSize="11sp" android:layout_marginTop="12dp" android:layout_marginBottom="6dp"/>
+                        android:text="天極·年極 / 地極·月極" android:textColor="#6A6860"
+                        android:textSize="10sp" android:letterSpacing="0.04"
+                        android:layout_marginTop="10dp" android:layout_marginBottom="5dp"/>
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                            android:background="#1C1B19" android:padding="12dp" android:orientation="vertical" android:layout_marginEnd="6dp">
+                            android:background="#191813" android:padding="12dp" android:orientation="vertical" android:layout_marginEnd="5dp">
                             <TextView android:id="@+id/tvNianD" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="天極·年" android:textColor="#888888" android:textSize="11sp"/>
+                                android:text="天極·年" android:textColor="#6A6860" android:textSize="10sp"/>
                             <TextView android:id="@+id/tvNian" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#C9A227" android:textSize="26sp" android:textStyle="bold"/>
+                                android:textColor="#D4AE30" android:textSize="28sp" android:textStyle="bold"
+                                android:layout_marginTop="2dp"/>
                         </LinearLayout>
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                            android:background="#1C1B19" android:padding="12dp" android:orientation="vertical">
+                            android:background="#191813" android:padding="12dp" android:orientation="vertical">
                             <TextView android:id="@+id/tvYueD" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="地極·月" android:textColor="#888888" android:textSize="11sp"/>
+                                android:text="地極·月" android:textColor="#6A6860" android:textSize="10sp"/>
                             <TextView android:id="@+id/tvYue" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#C9A227" android:textSize="26sp" android:textStyle="bold"/>
+                                android:textColor="#D4AE30" android:textSize="28sp" android:textStyle="bold"
+                                android:layout_marginTop="2dp"/>
                         </LinearLayout>
                     </LinearLayout>
+
+                    <!-- DaDuan/ZhDuan row -->
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:orientation="horizontal" android:layout_marginTop="6dp">
+                        android:orientation="horizontal" android:layout_marginTop="5dp">
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                            android:background="#1C1B19" android:padding="12dp" android:orientation="vertical" android:layout_marginEnd="6dp">
+                            android:background="#191813" android:padding="12dp" android:orientation="vertical" android:layout_marginEnd="5dp">
                             <TextView android:id="@+id/tvDaDuanD" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#888888" android:textSize="11sp"/>
+                                android:textColor="#6A6860" android:textSize="10sp"/>
                             <TextView android:id="@+id/tvDaDuan" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#C9A227" android:textSize="20sp" android:textStyle="bold"/>
+                                android:textColor="#D4AE30" android:textSize="22sp" android:textStyle="bold"
+                                android:layout_marginTop="2dp"/>
                         </LinearLayout>
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                            android:background="#1C1B19" android:padding="12dp" android:orientation="vertical">
+                            android:background="#191813" android:padding="12dp" android:orientation="vertical">
                             <TextView android:id="@+id/tvZhDuanD" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#888888" android:textSize="11sp"/>
+                                android:textColor="#6A6860" android:textSize="10sp"/>
                             <TextView android:id="@+id/tvZhDuan" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#C9A227" android:textSize="20sp" android:textStyle="bold"/>
+                                android:textColor="#D4AE30" android:textSize="22sp" android:textStyle="bold"
+                                android:layout_marginTop="2dp"/>
                         </LinearLayout>
                     </LinearLayout>
+
+                    <!-- XiDuan full-width -->
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:background="#1C1B19" android:padding="12dp" android:orientation="vertical" android:layout_marginTop="6dp">
+                        android:background="#191813" android:padding="12dp" android:orientation="vertical" android:layout_marginTop="5dp">
                         <TextView android:id="@+id/tvXiDuanD" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:textColor="#888888" android:textSize="11sp"/>
+                            android:textColor="#6A6860" android:textSize="10sp"/>
                         <TextView android:id="@+id/tvXiDuan" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:textColor="#C9A227" android:textSize="20sp" android:textStyle="bold"/>
+                            android:textColor="#D4AE30" android:textSize="22sp" android:textStyle="bold"
+                            android:layout_marginTop="2dp"/>
                     </LinearLayout>
+
+                    <!-- Ri/Shi row -->
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="人極·日極 / 時極 / 刻極" android:textColor="#888888"
-                        android:textSize="11sp" android:layout_marginTop="12dp" android:layout_marginBottom="6dp"/>
+                        android:text="人極·日極 / 時極 / 刻極" android:textColor="#6A6860"
+                        android:textSize="10sp" android:letterSpacing="0.04"
+                        android:layout_marginTop="10dp" android:layout_marginBottom="5dp"/>
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                            android:background="#1C1B19" android:padding="12dp" android:orientation="vertical" android:layout_marginEnd="6dp">
+                            android:background="#191813" android:padding="12dp" android:orientation="vertical" android:layout_marginEnd="5dp">
                             <TextView android:id="@+id/tvRiD" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="人極·日" android:textColor="#888888" android:textSize="11sp"/>
+                                android:text="人極·日" android:textColor="#6A6860" android:textSize="10sp"/>
                             <TextView android:id="@+id/tvRi" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#C9A227" android:textSize="26sp" android:textStyle="bold"/>
+                                android:textColor="#D4AE30" android:textSize="28sp" android:textStyle="bold"
+                                android:layout_marginTop="2dp"/>
                         </LinearLayout>
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                            android:background="#1C1B19" android:padding="12dp" android:orientation="vertical">
+                            android:background="#191813" android:padding="12dp" android:orientation="vertical">
                             <TextView android:id="@+id/tvShiD" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="時辰" android:textColor="#888888" android:textSize="11sp"/>
+                                android:text="時辰" android:textColor="#6A6860" android:textSize="10sp"/>
                             <TextView android:id="@+id/tvShi" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#C9A227" android:textSize="26sp" android:textStyle="bold"/>
+                                android:textColor="#D4AE30" android:textSize="28sp" android:textStyle="bold"
+                                android:layout_marginTop="2dp"/>
                         </LinearLayout>
                     </LinearLayout>
+
+                    <!-- DaKe/XiaoKe row -->
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:orientation="horizontal" android:layout_marginTop="6dp">
+                        android:orientation="horizontal" android:layout_marginTop="5dp">
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                            android:background="#1C1B19" android:padding="12dp" android:orientation="vertical" android:layout_marginEnd="6dp">
+                            android:background="#191813" android:padding="12dp" android:orientation="vertical" android:layout_marginEnd="5dp">
                             <TextView android:id="@+id/tvDaKeD" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#888888" android:textSize="11sp"/>
+                                android:textColor="#6A6860" android:textSize="10sp"/>
                             <TextView android:id="@+id/tvDaKe" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#C9A227" android:textSize="20sp" android:textStyle="bold"/>
+                                android:textColor="#D4AE30" android:textSize="22sp" android:textStyle="bold"
+                                android:layout_marginTop="2dp"/>
                         </LinearLayout>
                         <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                            android:background="#1C1B19" android:padding="12dp" android:orientation="vertical">
+                            android:background="#191813" android:padding="12dp" android:orientation="vertical">
                             <TextView android:id="@+id/tvXiaoKeD" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#888888" android:textSize="11sp"/>
+                                android:textColor="#6A6860" android:textSize="10sp"/>
                             <TextView android:id="@+id/tvXiaoKe" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:textColor="#C9A227" android:textSize="20sp" android:textStyle="bold"/>
+                                android:textColor="#D4AE30" android:textSize="22sp" android:textStyle="bold"
+                                android:layout_marginTop="2dp"/>
                         </LinearLayout>
                     </LinearLayout>
+
                     <View android:layout_width="match_parent" android:layout_height="16dp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -200,142 +269,224 @@
 
         <!-- TAB 2: 子午流注 -->
         <ScrollView android:id="@+id/pageZiwu"
-            android:layout_width="match_parent" android:layout_height="match_parent" android:visibility="gone">
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:background="#0F0E0C" android:visibility="gone">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical" android:padding="16dp">
+                android:orientation="vertical" android:padding="14dp" android:paddingBottom="20dp">
                 <LinearLayout android:id="@+id/ziwuEmptyHint"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:gravity="center" android:padding="40dp" android:orientation="vertical">
+                    android:gravity="center" android:padding="48dp" android:orientation="vertical">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="請先在「時空排盤」頁輸入日期與小時，再按「排盤」"
-                        android:textColor="#888888" android:textSize="14sp" android:gravity="center"/>
+                        android:text="請先在「時空排盤」頁\n輸入日期與小時，再按「排盤」"
+                        android:textColor="#4A4840" android:textSize="13sp" android:gravity="center"
+                        android:lineSpacingExtra="4dp"/>
                 </LinearLayout>
                 <LinearLayout android:id="@+id/ziwuContent"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="vertical" android:visibility="gone">
                     <TextView android:id="@+id/tvZiwuContext" android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:background="#1A2E2E"
-                        android:padding="14dp" android:textColor="#9ECFCE" android:textSize="14sp"
-                        android:layout_marginBottom="12dp"/>
+                        android:layout_height="wrap_content" android:background="#141F1F"
+                        android:padding="12dp" android:textColor="#7DBDBC" android:textSize="13sp"
+                        android:layout_marginBottom="10dp" android:letterSpacing="0.04"/>
                     <!-- 納子法 -->
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:background="#1C1B19" android:padding="16dp" android:orientation="vertical" android:layout_marginBottom="10dp">
+                        android:background="#191813" android:padding="14dp" android:orientation="vertical" android:layout_marginBottom="8dp">
+                        <View android:layout_width="28dp" android:layout_height="2dp"
+                            android:background="#C9A227" android:layout_marginBottom="8dp"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="▌ 納子法（逢時取穴）" android:textColor="#C9A227"
-                            android:textSize="14sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+                            android:text="納子法（逢時取穴）" android:textColor="#D4AE30"
+                            android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
                         <TextView android:id="@+id/tvNaziMeridian" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:textColor="#CDCCCA"
-                            android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="4dp"/>
+                            android:layout_height="wrap_content" android:textColor="#E0DDD5"
+                            android:textSize="17sp" android:textStyle="bold" android:layout_marginBottom="3dp"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="逢時可取五輸穴" android:textColor="#888888" android:textSize="11sp"/>
+                            android:text="逢時可取五輸穴" android:textColor="#6A6860" android:textSize="10sp"/>
                         <TextView android:id="@+id/tvNaziAllPoints" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:textColor="#C9A227"
-                            android:textSize="15sp" android:layout_marginBottom="10dp"/>
+                            android:layout_height="wrap_content" android:textColor="#D4AE30"
+                            android:textSize="14sp" android:layout_marginBottom="10dp" android:layout_marginTop="4dp"/>
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                                android:background="#252422" android:padding="10dp" android:orientation="vertical" android:layout_marginEnd="6dp">
+                                android:background="#222018" android:padding="10dp" android:orientation="vertical" android:layout_marginEnd="5dp">
                                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="補穴（虛症）" android:textColor="#888888" android:textSize="10sp"/>
+                                    android:text="補穴（虛症）" android:textColor="#6A6860" android:textSize="10sp"/>
                                 <TextView android:id="@+id/tvNaziBu" android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" android:textColor="#9ECFCE" android:textSize="16sp" android:textStyle="bold"/>
+                                    android:layout_height="wrap_content" android:textColor="#7DBDBC" android:textSize="15sp" android:textStyle="bold"/>
                             </LinearLayout>
                             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                                android:background="#252422" android:padding="10dp" android:orientation="vertical" android:layout_marginEnd="6dp">
+                                android:background="#222018" android:padding="10dp" android:orientation="vertical" android:layout_marginEnd="5dp">
                                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="瀉穴（實症）" android:textColor="#888888" android:textSize="10sp"/>
+                                    android:text="瀉穴（實症）" android:textColor="#6A6860" android:textSize="10sp"/>
                                 <TextView android:id="@+id/tvNaziXie" android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" android:textColor="#FF8080" android:textSize="16sp" android:textStyle="bold"/>
+                                    android:layout_height="wrap_content" android:textColor="#E07070" android:textSize="15sp" android:textStyle="bold"/>
                             </LinearLayout>
                             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                                android:background="#252422" android:padding="10dp" android:orientation="vertical">
+                                android:background="#222018" android:padding="10dp" android:orientation="vertical">
                                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="本穴/原穴" android:textColor="#888888" android:textSize="10sp"/>
+                                    android:text="本穴/原穴" android:textColor="#6A6860" android:textSize="10sp"/>
                                 <TextView android:id="@+id/tvNaziBen" android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" android:textColor="#CDCCCA" android:textSize="16sp" android:textStyle="bold"/>
+                                    android:layout_height="wrap_content" android:textColor="#E0DDD5" android:textSize="15sp" android:textStyle="bold"/>
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                     <!-- 納甲法 -->
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:background="#1C1B19" android:padding="16dp" android:orientation="vertical" android:layout_marginBottom="10dp">
+                        android:background="#191813" android:padding="14dp" android:orientation="vertical" android:layout_marginBottom="8dp">
+                        <View android:layout_width="28dp" android:layout_height="2dp"
+                            android:background="#C9A227" android:layout_marginBottom="8dp"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="▌ 納甲法（按日干時干）" android:textColor="#C9A227"
-                            android:textSize="14sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+                            android:text="納甲法（按日干時干）" android:textColor="#D4AE30"
+                            android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:orientation="horizontal" android:layout_marginBottom="8dp">
                             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                                android:background="#252422" android:padding="10dp" android:orientation="vertical" android:layout_marginEnd="6dp">
+                                android:background="#222018" android:padding="10dp" android:orientation="vertical" android:layout_marginEnd="5dp">
                                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="主穴" android:textColor="#888888" android:textSize="10sp"/>
+                                    android:text="主穴" android:textColor="#6A6860" android:textSize="10sp"/>
                                 <TextView android:id="@+id/tvNaJiaMain" android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" android:textColor="#C9A227" android:textSize="16sp" android:textStyle="bold"/>
+                                    android:layout_height="wrap_content" android:textColor="#D4AE30" android:textSize="15sp" android:textStyle="bold"/>
                             </LinearLayout>
                             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                                android:background="#252422" android:padding="10dp" android:orientation="vertical" android:layout_marginEnd="6dp">
+                                android:background="#222018" android:padding="10dp" android:orientation="vertical" android:layout_marginEnd="5dp">
                                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="合日互用" android:textColor="#888888" android:textSize="10sp"/>
+                                    android:text="合日互用" android:textColor="#6A6860" android:textSize="10sp"/>
                                 <TextView android:id="@+id/tvNaJiaHe" android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" android:textColor="#9ECFCE" android:textSize="16sp" android:textStyle="bold"/>
+                                    android:layout_height="wrap_content" android:textColor="#7DBDBC" android:textSize="15sp" android:textStyle="bold"/>
                             </LinearLayout>
                             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-                                android:background="#252422" android:padding="10dp" android:orientation="vertical">
+                                android:background="#222018" android:padding="10dp" android:orientation="vertical">
                                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="返本還原" android:textColor="#888888" android:textSize="10sp"/>
+                                    android:text="返本還原" android:textColor="#6A6860" android:textSize="10sp"/>
                                 <TextView android:id="@+id/tvNaJiaYuan" android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" android:textColor="#CDCCCA" android:textSize="16sp" android:textStyle="bold"/>
+                                    android:layout_height="wrap_content" android:textColor="#E0DDD5" android:textSize="15sp" android:textStyle="bold"/>
                             </LinearLayout>
                         </LinearLayout>
                         <TextView android:id="@+id/tvNaJiaNote" android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:textColor="#888888" android:textSize="11sp"/>
+                            android:layout_height="wrap_content" android:textColor="#6A6860" android:textSize="11sp"/>
                     </LinearLayout>
                     <!-- 靈龜八法 -->
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:background="#1C1B19" android:padding="16dp" android:orientation="vertical" android:layout_marginBottom="10dp">
+                        android:background="#191813" android:padding="14dp" android:orientation="vertical" android:layout_marginBottom="8dp">
+                        <View android:layout_width="28dp" android:layout_height="2dp"
+                            android:background="#C9A227" android:layout_marginBottom="8dp"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="▌ 靈龜八法（奇經八穴）" android:textColor="#C9A227"
-                            android:textSize="14sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+                            android:text="靈龜八法（奇經八穴）" android:textColor="#D4AE30"
+                            android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
                         <TextView android:id="@+id/tvLingGui" android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:textColor="#CDCCCA"
-                            android:textSize="14sp" android:lineSpacingExtra="4dp"/>
+                            android:layout_height="wrap_content" android:textColor="#E0DDD5"
+                            android:textSize="13sp" android:lineSpacingExtra="4dp"/>
                     </LinearLayout>
                     <!-- 飛騰八法 -->
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:background="#1C1B19" android:padding="16dp" android:orientation="vertical" android:layout_marginBottom="16dp">
+                        android:background="#191813" android:padding="14dp" android:orientation="vertical" android:layout_marginBottom="16dp">
+                        <View android:layout_width="28dp" android:layout_height="2dp"
+                            android:background="#C9A227" android:layout_marginBottom="8dp"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="▌ 飛騰八法（按時干）" android:textColor="#C9A227"
-                            android:textSize="14sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+                            android:text="飛騰八法（按時干）" android:textColor="#D4AE30"
+                            android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
                         <TextView android:id="@+id/tvFeiteng" android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:textColor="#CDCCCA" android:textSize="14sp"/>
+                            android:layout_height="wrap_content" android:textColor="#E0DDD5" android:textSize="13sp"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
+
+        <!-- TAB 3: 歷史檔案 -->
+        <LinearLayout android:id="@+id/pageHistory"
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:orientation="vertical" android:background="#0F0E0C"
+            android:visibility="gone">
+
+            <!-- Header row -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:paddingStart="14dp" android:paddingEnd="14dp"
+                android:paddingTop="12dp" android:paddingBottom="8dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="歷史排盤記錄" android:textColor="#D4AE30"
+                    android:textSize="13sp" android:textStyle="bold" android:letterSpacing="0.04"/>
+                <Button android:id="@+id/btnClearHistory"
+                    android:layout_width="wrap_content" android:layout_height="32dp"
+                    android:text="清除全部" android:textSize="11sp"
+                    android:textColor="#888888"
+                    android:backgroundTint="#222018"
+                    android:paddingStart="12dp" android:paddingEnd="12dp"
+                    android:stateListAnimator="@null"/>
+            </LinearLayout>
+
+            <!-- Empty hint -->
+            <LinearLayout android:id="@+id/historyEmptyHint"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center" android:orientation="vertical" android:padding="48dp"
+                android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="尚無排盤記錄\n\n每次「排盤」後\n結果會自動儲存於此"
+                    android:textColor="#4A4840" android:textSize="13sp" android:gravity="center"
+                    android:lineSpacingExtra="4dp"/>
+            </LinearLayout>
+
+            <!-- List container -->
+            <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+                android:layout_weight="1">
+                <LinearLayout android:id="@+id/historyList"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp" android:paddingBottom="20dp"/>
+            </ScrollView>
+        </LinearLayout>
+
     </FrameLayout>
 
     <!-- BOTTOM TAB BAR -->
-    <LinearLayout android:layout_width="match_parent" android:layout_height="56dp"
-        android:layout_gravity="bottom" android:background="#1C1B19"
-        android:orientation="horizontal" android:elevation="8dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="60dp"
+        android:layout_gravity="bottom" android:background="#13120F"
+        android:orientation="horizontal" android:elevation="10dp">
+
+        <!-- Tab: 排盤 -->
         <LinearLayout android:id="@+id/tabPaipan"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:gravity="center" android:orientation="vertical"
             android:clickable="true" android:focusable="true">
+            <View android:id="@+id/tabPaipanLine"
+                android:layout_width="24dp" android:layout_height="2dp"
+                android:background="#C9A227" android:layout_marginBottom="4dp"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="⊙" android:textSize="18sp" android:textColor="#C9A227"/>
+                android:text="⊙" android:textSize="16sp" android:textColor="#C9A227"/>
             <TextView android:id="@+id/tabPaipanLabel" android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:text="時空排盤"
-                android:textSize="10sp" android:textColor="#C9A227"/>
+                android:textSize="9sp" android:textColor="#C9A227" android:letterSpacing="0.02"/>
         </LinearLayout>
+
+        <!-- Tab: 子午流注 -->
         <LinearLayout android:id="@+id/tabZiwu"
             android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
             android:gravity="center" android:orientation="vertical"
             android:clickable="true" android:focusable="true">
+            <View android:id="@+id/tabZiwuLine"
+                android:layout_width="24dp" android:layout_height="2dp"
+                android:background="#2A2820" android:layout_marginBottom="4dp"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="針" android:textSize="18sp" android:textColor="#4A4840"/>
+                android:text="針" android:textSize="16sp" android:textColor="#3E3C38"/>
             <TextView android:id="@+id/tabZiwuLabel" android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:text="子午流注"
-                android:textSize="10sp" android:textColor="#4A4840"/>
+                android:textSize="9sp" android:textColor="#3E3C38" android:letterSpacing="0.02"/>
         </LinearLayout>
+
+        <!-- Tab: 歷史 -->
+        <LinearLayout android:id="@+id/tabHistory"
+            android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+            android:gravity="center" android:orientation="vertical"
+            android:clickable="true" android:focusable="true">
+            <View android:id="@+id/tabHistoryLine"
+                android:layout_width="24dp" android:layout_height="2dp"
+                android:background="#2A2820" android:layout_marginBottom="4dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="卷" android:textSize="16sp" android:textColor="#3E3C38"/>
+            <TextView android:id="@+id/tabHistoryLabel" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="歷史檔案"
+                android:textSize="9sp" android:textColor="#3E3C38" android:letterSpacing="0.02"/>
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
