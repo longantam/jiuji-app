@@ -25,21 +25,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pagePaipan: ScrollView
     private lateinit var pageZiwu: ScrollView
     private lateinit var pageHistory: LinearLayout
-    private lateinit var pageAnalysis: ScrollView   // NEW: 調治分析 tab
+    private lateinit var pageAnalysis: ScrollView
 
     // --- Tab views ---
     private lateinit var tabPaipan: View
     private lateinit var tabZiwu: View
     private lateinit var tabHistory: View
-    private lateinit var tabAnalysis: View           // NEW
+    private lateinit var tabAnalysis: View
     private lateinit var tabPaipanLabel: TextView
     private lateinit var tabZiwuLabel: TextView
     private lateinit var tabHistoryLabel: TextView
-    private lateinit var tabAnalysisLabel: TextView  // NEW
+    private lateinit var tabAnalysisLabel: TextView
     private lateinit var tabPaipanLine: View
     private lateinit var tabZiwuLine: View
     private lateinit var tabHistoryLine: View
-    private lateinit var tabAnalysisLine: View       // NEW
+    private lateinit var tabAnalysisLine: View
     private lateinit var tvTabTitle: TextView
 
     // --- Result views ---
@@ -92,17 +92,16 @@ class MainActivity : AppCompatActivity() {
     private var lastResult: PaipanEngine.PaipanResult? = null
     private var currentTab = 0
 
-    // accent / muted colours
-    private val COL_GOLD    = Color.parseColor("#C9A227")
-    private val COL_MUTED   = Color.parseColor("#3E3C38")
-    private val COL_ACTIVE  = Color.parseColor("#C9A227")
+    private val COL_GOLD     = Color.parseColor("#C9A227")
+    private val COL_MUTED    = Color.parseColor("#3E3C38")
+    private val COL_ACTIVE   = Color.parseColor("#C9A227")
     private val COL_LINE_OFF = Color.parseColor("#2A2820")
-    private val COL_BG_CARD = Color.parseColor("#191813")
-    private val COL_BG_ROW  = Color.parseColor("#222018")
-    private val COL_TEAL    = Color.parseColor("#3E8080")
-    private val COL_RED     = Color.parseColor("#A04040")
-    private val COL_LABEL   = Color.parseColor("#6A6050")
-    private val COL_VALUE   = Color.parseColor("#D4C090")
+    private val COL_BG_CARD  = Color.parseColor("#191813")
+    private val COL_BG_ROW   = Color.parseColor("#222018")
+    private val COL_TEAL     = Color.parseColor("#3E8080")
+    private val COL_RED      = Color.parseColor("#A04040")
+    private val COL_LABEL    = Color.parseColor("#6A6050")
+    private val COL_VALUE    = Color.parseColor("#D4C090")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,6 +110,8 @@ class MainActivity : AppCompatActivity() {
         setupListeners()
         UpdateChecker.checkSilently(this)
     }
+
+    // ── BIND ──────────────────────────────────────────────────────────────────
 
     private fun bindViews() {
         etYear   = findViewById(R.id.etYear)
@@ -126,9 +127,9 @@ class MainActivity : AppCompatActivity() {
         pageZiwu    = findViewById(R.id.pageZiwu)
         pageHistory = findViewById(R.id.pageHistory)
 
-        tabPaipan      = findViewById(R.id.tabPaipan)
-        tabZiwu        = findViewById(R.id.tabZiwu)
-        tabHistory     = findViewById(R.id.tabHistory)
+        tabPaipan       = findViewById(R.id.tabPaipan)
+        tabZiwu         = findViewById(R.id.tabZiwu)
+        tabHistory      = findViewById(R.id.tabHistory)
         tabPaipanLabel  = findViewById(R.id.tabPaipanLabel)
         tabZiwuLabel    = findViewById(R.id.tabZiwuLabel)
         tabHistoryLabel = findViewById(R.id.tabHistoryLabel)
@@ -177,19 +178,24 @@ class MainActivity : AppCompatActivity() {
         historyList      = findViewById(R.id.historyList)
         btnClearHistory  = findViewById(R.id.btnClearHistory)
 
-        // --- Build Analysis Tab programmatically ---
         buildAnalysisTab()
     }
 
-    // ── BUILD ANALYSIS TAB ─────────────────────────────────────────────────────
+    // ── BUILD ANALYSIS TAB ────────────────────────────────────────────────────
+    // pageAnalysis ScrollView → injected into the FrameLayout (first child of pageRoot)
+    // Tab button            → injected into tabBar (second child of pageRoot)
 
     private fun buildAnalysisTab() {
-        // ScrollView wrapper
+        // 1. Find the FrameLayout that hosts all tab pages (first child of pageRoot)
+        val pageRoot  = findViewById<LinearLayout>(R.id.pageRoot)
+        val frameArea = pageRoot.getChildAt(0) as FrameLayout   // weight=1 page area
+        val tabBar    = findViewById<LinearLayout>(R.id.tabBar)
+
+        // 2. Build the ScrollView page
         val sv = ScrollView(this).apply {
-            id = View.generateViewId()
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
+            layoutParams = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
             )
             visibility = View.GONE
         }
@@ -208,7 +214,6 @@ class MainActivity : AppCompatActivity() {
             setTextColor(COL_MUTED)
             gravity = Gravity.CENTER
             setPadding(dp(24), dp(48), dp(24), 0)
-            visibility = View.VISIBLE
         }
         analysisEmptyHint = hint
         inner.addView(hint)
@@ -221,43 +226,55 @@ class MainActivity : AppCompatActivity() {
         analysisContent = content
         inner.addView(content)
 
-        // Tab button (programmatic)
+        // Attach page into FrameLayout
+        frameArea.addView(sv)
+
+        // 3. Build the Tab button (matches style of tabPaipan / tabZiwu / tabHistory)
         val tabBtn = LinearLayout(this).apply {
-            id = View.generateViewId()
             orientation = LinearLayout.VERTICAL
-            gravity = Gravity.CENTER_HORIZONTAL
-            setPadding(0, 0, 0, 0)
+            gravity = Gravity.CENTER
+            isClickable = true
+            isFocusable = true
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
         }
         tabAnalysis = tabBtn
 
-        val tabLabel = TextView(this).apply {
-            text = "調治分析"
-            textSize = 13f
-            setTextColor(COL_MUTED)
-            gravity = Gravity.CENTER
-            setPadding(dp(16), dp(10), dp(16), dp(6))
-        }
-        tabAnalysisLabel = tabLabel
-        tabBtn.addView(tabLabel)
-
+        // Top accent line (same as tabPaipanLine etc.)
         val tabLine = View(this).apply {
-            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(2))
+            layoutParams = LinearLayout.LayoutParams(dp(24), dp(2)).also {
+                it.bottomMargin = dp(4)
+            }
             setBackgroundColor(COL_LINE_OFF)
         }
         tabAnalysisLine = tabLine
         tabBtn.addView(tabLine)
 
-        // Attach to tab bar and page container
-        val tabBar = findViewById<LinearLayout>(R.id.tabBar)
-        tabBar.addView(tabBtn, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f))
+        // Icon
+        val tabIcon = TextView(this).apply {
+            text = "析"
+            textSize = 16f
+            setTextColor(COL_MUTED)
+            gravity = Gravity.CENTER
+        }
+        tabBtn.addView(tabIcon)
 
-        val pageRoot = findViewById<LinearLayout>(R.id.pageRoot)
-        pageRoot.addView(sv, LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f
-        ))
+        // Label
+        val tabLabel = TextView(this).apply {
+            text = "調治分析"
+            textSize = 9f
+            setTextColor(COL_MUTED)
+            gravity = Gravity.CENTER
+            letterSpacing = 0.02f
+        }
+        tabAnalysisLabel = tabLabel
+        tabBtn.addView(tabLabel)
 
+        // Attach tab button into tabBar
+        tabBar.addView(tabBtn)
         tabBtn.setOnClickListener { switchTab(3) }
     }
+
+    // ── LISTENERS ─────────────────────────────────────────────────────────────
 
     private fun setupListeners() {
         val watcher = object : TextWatcher {
@@ -281,24 +298,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // ── TAB SWITCHING ──────────────────────────────────────────────────────────
+    // ── TAB SWITCHING ─────────────────────────────────────────────────────────
 
     private fun switchTab(tab: Int) {
         currentTab = tab
-        pagePaipan.visibility  = if (tab == 0) View.VISIBLE else View.GONE
-        pageZiwu.visibility    = if (tab == 1) View.VISIBLE else View.GONE
-        pageHistory.visibility = if (tab == 2) View.VISIBLE else View.GONE
+        pagePaipan.visibility   = if (tab == 0) View.VISIBLE else View.GONE
+        pageZiwu.visibility     = if (tab == 1) View.VISIBLE else View.GONE
+        pageHistory.visibility  = if (tab == 2) View.VISIBLE else View.GONE
         pageAnalysis.visibility = if (tab == 3) View.VISIBLE else View.GONE
 
-        setTabActive(tabPaipanLabel,  tabPaipanLine,  tab == 0)
-        setTabActive(tabZiwuLabel,    tabZiwuLine,    tab == 1)
-        setTabActive(tabHistoryLabel, tabHistoryLine, tab == 2)
+        setTabActive(tabPaipanLabel,   tabPaipanLine,   tab == 0)
+        setTabActive(tabZiwuLabel,     tabZiwuLine,     tab == 1)
+        setTabActive(tabHistoryLabel,  tabHistoryLine,  tab == 2)
         setTabActive(tabAnalysisLabel, tabAnalysisLine, tab == 3)
 
         tvTabTitle.text = when (tab) {
-            1 -> "子午流注針法"
-            2 -> "歷史排盤檔案"
-            3 -> "應象調治分析"
+            1    -> "子午流注針法"
+            2    -> "歷史排盤檔案"
+            3    -> "應象調治分析"
             else -> "時空排盤"
         }
 
@@ -356,7 +373,6 @@ class MainActivity : AppCompatActivity() {
         if (currentTab == 1) refreshZiwu()
         if (currentTab == 3) refreshAnalysis()
 
-        // Save to history
         HistoryStore.save(this, y, m, d, h, mn, result)
     }
 
@@ -409,11 +425,11 @@ class MainActivity : AppCompatActivity() {
         val summary = r.summary()
         val ar = AnalysisEngine.analyze(summary)
 
-        // ── 時空摘要 header
+        // 時空摘要
         addSectionHeader("時空摘要")
         addInfoRow("排盤", summary, COL_GOLD)
 
-        // ── 應時失常 / 應時不足
+        // 應時異常
         if (ar.shichang.isNotEmpty() || ar.buzu.isNotEmpty()) {
             addSectionHeader("應時異常")
             if (ar.shichang.isNotEmpty())
@@ -422,20 +438,20 @@ class MainActivity : AppCompatActivity() {
                 addInfoRow("應時不足（地支）", ar.buzu.joinToString("  "), COL_TEAL)
         }
 
-        // ── 病象分析
+        // 病象分析
         addSectionHeader("病象分析")
         addInfoRow("病因", ar.bingYin,   COL_VALUE)
         addInfoRow("病症", ar.bingZheng, COL_VALUE)
         addInfoRow("病機", ar.bingJi,    COL_VALUE)
         addInfoRow("病位", ar.bingWei,   COL_VALUE)
 
-        // ── 調治原則
+        // 調治原則
         addSectionHeader("調治原則")
         ar.zhiZe.split("\n").filter { it.isNotBlank() }.forEach { line ->
             addInfoRow("", line, COL_GOLD)
         }
 
-        // ── 四行療法提示
+        // 四行療法提示
         if (ar.fourLineHints.isNotEmpty()) {
             addSectionHeader("四行療法對應")
             ar.fourLineHints.forEach { hint ->
@@ -443,7 +459,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // ── 干支關聯明細
+        // 干支關聯明細
         if (ar.relations.isNotEmpty()) {
             addSectionHeader("干支關聯明細")
             ar.relations.forEach { rel ->
@@ -455,21 +471,21 @@ class MainActivity : AppCompatActivity() {
                     AnalysisEngine.RelationType.KE_NI    -> "克逆"
                 }
                 val col = when (rel.type) {
-                    AnalysisEngine.RelationType.KE_NI  -> COL_RED
+                    AnalysisEngine.RelationType.KE_NI                                          -> COL_RED
                     AnalysisEngine.RelationType.TONG_GAN, AnalysisEngine.RelationType.TONG_ZHI -> COL_TEAL
-                    else -> COL_LABEL
+                    else                                                                        -> COL_LABEL
                 }
                 addInfoRow("${rel.poleLabel}【$typeLabel】",
                     "${rel.humanPole} ↔ ${rel.otherPole}", col)
             }
         }
 
-        // ── 防變提示
+        // 防變提示
         addSectionHeader("防變提示")
         addInfoRow("", ar.fangBian, Color.parseColor("#A08040"))
     }
 
-    // ── Analysis helper views ──────────────────────────────────────────────────
+    // ── Analysis helper views ─────────────────────────────────────────────────
 
     private fun addSectionHeader(title: String) {
         val tv = TextView(this).apply {
@@ -494,12 +510,10 @@ class MainActivity : AppCompatActivity() {
             orientation = LinearLayout.HORIZONTAL
             setBackgroundColor(COL_BG_ROW)
             setPadding(dp(12), dp(10), dp(12), dp(10))
-            val lp = LinearLayout.LayoutParams(
+            layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            lp.topMargin = dp(2)
-            layoutParams = lp
+            ).also { it.topMargin = dp(2) }
         }
 
         if (label.isNotEmpty()) {
@@ -521,8 +535,7 @@ class MainActivity : AppCompatActivity() {
             textSize = 13f
             setTextColor(valueColor)
             layoutParams = LinearLayout.LayoutParams(
-                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f
-            )
+                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
         }
         row.addView(tvValue)
         analysisContent.addView(row)
@@ -552,10 +565,10 @@ class MainActivity : AppCompatActivity() {
 
         val naJia = ziwu.naJia
         if (naJia != null) {
-            tvNaJiaMain.text  = naJia.mainPt ?: "（無主穴）"
-            tvNaJiaHe.text    = naJia.hePt   ?: "—"
-            tvNaJiaYuan.text  = naJia.yuanPt ?: "—"
-            tvNaJiaNote.text  = naJia.note
+            tvNaJiaMain.text = naJia.mainPt ?: "（無主穴）"
+            tvNaJiaHe.text   = naJia.hePt   ?: "—"
+            tvNaJiaYuan.text = naJia.yuanPt ?: "—"
+            tvNaJiaNote.text = naJia.note
         }
         val lingGui = ziwu.lingGui
         if (lingGui != null) {
@@ -589,12 +602,10 @@ class MainActivity : AppCompatActivity() {
                 orientation = LinearLayout.VERTICAL
                 setBackgroundColor(COL_BG_CARD)
                 setPadding(dp(14), dp(12), dp(14), dp(12))
-                val lp = LinearLayout.LayoutParams(
+                layoutParams = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
-                )
-                lp.bottomMargin = dp(8)
-                layoutParams = lp
+                ).also { it.bottomMargin = dp(8) }
             }
 
             val topRow = LinearLayout(this).apply {
@@ -638,42 +649,28 @@ class MainActivity : AppCompatActivity() {
                 letterSpacing = 0.04f
             }
 
-            val valRow = LinearLayout(this).apply {
-                orientation = LinearLayout.HORIZONTAL
-            }
-            listOf(
-                "年" to rec.nianJi,
-                "月" to rec.yueJi,
-                "日" to rec.riJi,
-                "時" to (rec.shiJi ?: "—")
-            ).forEach { (label, value) ->
-                val cell = LinearLayout(this).apply {
-                    orientation = LinearLayout.VERTICAL
-                    setBackgroundColor(COL_BG_ROW)
-                    setPadding(dp(10), dp(8), dp(10), dp(8))
-                    val lp = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
-                    lp.marginEnd = dp(4)
-                    layoutParams = lp
+            val valRow = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
+            listOf("年" to rec.nianJi, "月" to rec.yueJi, "日" to rec.riJi, "時" to (rec.shiJi ?: "—"))
+                .forEach { (label, value) ->
+                    val cell = LinearLayout(this).apply {
+                        orientation = LinearLayout.VERTICAL
+                        setBackgroundColor(COL_BG_ROW)
+                        setPadding(dp(10), dp(8), dp(10), dp(8))
+                        layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+                            .also { it.marginEnd = dp(4) }
+                    }
+                    cell.addView(TextView(this).apply {
+                        text = label; textSize = 9f; setTextColor(Color.parseColor("#4A4840"))
+                    })
+                    cell.addView(TextView(this).apply {
+                        text = value; textSize = 20f; setTextColor(Color.parseColor("#D4AE30"))
+                        typeface = android.graphics.Typeface.DEFAULT_BOLD
+                    })
+                    valRow.addView(cell)
                 }
-                val lbl = TextView(this).apply {
-                    text = label
-                    textSize = 9f
-                    setTextColor(Color.parseColor("#4A4840"))
-                }
-                val val_ = TextView(this).apply {
-                    text = value
-                    textSize = 20f
-                    setTextColor(Color.parseColor("#D4AE30"))
-                    typeface = android.graphics.Typeface.DEFAULT_BOLD
-                }
-                cell.addView(lbl)
-                cell.addView(val_)
-                valRow.addView(cell)
-            }
 
             val tvLun = TextView(this).apply {
-                text = rec.lunarStr
-                textSize = 11f
+                text = rec.lunarStr; textSize = 11f
                 setTextColor(Color.parseColor("#4A6060"))
                 setPadding(0, dp(6), 0, 0)
             }
