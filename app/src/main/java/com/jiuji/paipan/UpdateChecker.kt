@@ -14,31 +14,47 @@ import java.io.IOException
 
 object UpdateChecker {
 
-    private const val CHECK_URL = "https://example.com/jiuji/version.json"
+    private const val API_URL =
+        "https://api.github.com/repos/longantam/jiuji-app/releases/latest"
 
     fun checkSilently(context: Context) {
         try {
             val client = OkHttpClient()
-            val request = Request.Builder().url(CHECK_URL).build()
+            val request = Request.Builder().url(API_URL).build()
             client.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {}
                 override fun onResponse(call: Call, response: Response) {
                     try {
                         val body = response.body?.string() ?: return
                         val json = JSONObject(body)
-                        val remoteVersion = json.getString("version")
+                        val latestTag = json.getString("tag_name") // e.g. "v1.0.2"
+
                         val currentVersion = context.packageManager
                             .getPackageInfo(context.packageName, 0).versionName
-                        if (compareVersion(remoteVersion, currentVersion) > 0) {
-                            val downloadUrl = json.getString("url")
-                            val notes = json.optString("notes", "")
-                            val title = "發現新版本 v" + remoteVersion
-                            val message = "更新內容：" + notes
+                        val currentTag = if (currentVersion.startsWith("v")) currentVersion
+                                         else "v$currentVersion"
+
+                        if (latestTag != currentTag) {
+                            val assets = json.getJSONArray("assets")
+                            var apkUrl: String? = null
+                            for (i in 0 until assets.length()) {
+                                val asset = assets.getJSONObject(i)
+                                if (asset.optString("name").endsWith(".apk", ignoreCase = true)) {
+                                    apkUrl = asset.getString("browser_download_url")
+                                    break
+                                }
+                            }
+                            if (apkUrl == null) return
+
+                            val notes = json.optString("body", "").let {
+                                if (it.isBlank()) "點擊下載安裝最新版本。" else it
+                            }
+                            val downloadUrl = apkUrl
                             val activity = context as? android.app.Activity
                             activity?.runOnUiThread {
                                 AlertDialog.Builder(context)
-                                    .setTitle(title)
-                                    .setMessage(message)
+                                    .setTitle("🆕 發現新版本 $latestTag")
+                                    .setMessage(notes)
                                     .setPositiveButton("立即更新") { _, _ ->
                                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(downloadUrl))
                                         context.startActivity(intent)
@@ -51,15 +67,5 @@ object UpdateChecker {
                 }
             })
         } catch (e: Exception) {}
-    }
-
-    private fun compareVersion(a: String, b: String): Int {
-        val av = a.split(".").map { it.toIntOrNull() ?: 0 }
-        val bv = b.split(".").map { it.toIntOrNull() ?: 0 }
-        for (i in 0..2) {
-            val diff = (av.getOrElse(i) { 0 }) - (bv.getOrElse(i) { 0 })
-            if (diff != 0) return diff
-        }
-        return 0
     }
 }
