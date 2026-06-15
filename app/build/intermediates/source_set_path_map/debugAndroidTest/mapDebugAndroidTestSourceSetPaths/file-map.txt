@@ -1,4 +1,0 @@
-com.jiuji.paipan.test.app-androidTest-0 /Users/longan/Downloads/JiujiPaipan/app/build/generated/res/resValues/androidTest/debug
-com.jiuji.paipan.test.app-mergeDebugAndroidTestResources-1 /Users/longan/Downloads/JiujiPaipan/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
-com.jiuji.paipan.test.app-mergeDebugAndroidTestResources-2 /Users/longan/Downloads/JiujiPaipan/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
-com.jiuji.paipan.test.app-debugAndroidTest-3 /Users/longan/Downloads/JiujiPaipan/app/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources
