@@ -1,0 +1,292 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from [com.google.android.material:material:1.12.0] /Users/longan/.gradle/caches/transforms-4/cb6b45034b8d07e691792fdf739993e2/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/longan/.gradle/caches/transforms-4/7017deb996edc4e53d195691b9c78339/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/longan/.gradle/caches/transforms-4/a5f5b7649693d256996803e1a33aa67c/transformed/jetified-appcompat-resources-1.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.0] /Users/longan/.gradle/caches/transforms-4/52b9e3469e77340b65a09f33fb0e7a65/transformed/appcompat-1.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /Users/longan/.gradle/caches/transforms-4/9e4608e2ac2ba2c122c44784d05da6bf/transformed/jetified-emoji2-views-helper-1.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/longan/.gradle/caches/transforms-4/27e40364376aaf102ea2cd0142871bf4/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/longan/.gradle/caches/transforms-4/490a945d89655558cc069d2c17fce1a0/transformed/fragment-1.5.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.8.0] /Users/longan/.gradle/caches/transforms-4/5bc7dde944472edbe246361ec567967e/transformed/jetified-activity-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/longan/.gradle/caches/transforms-4/8ccabf245005f5cfe83966550e9cdf9e/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/longan/.gradle/caches/transforms-4/b8056624ca4bc526a20a33f51b09edfc/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.5.0] /Users/longan/.gradle/caches/transforms-4/426e365bac99f63499d55b985b14b034/transformed/transition-1.5.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/longan/.gradle/caches/transforms-4/3edf7b2f6837dac67b44ed23e51c9908/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/longan/.gradle/caches/transforms-4/bc5011b56f6448b86970ac55cfda66a0/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/longan/.gradle/caches/transforms-4/495005379d4a1cf44f5e02c7e3236ab9/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/longan/.gradle/caches/transforms-4/57ea081e698c6d91da0c9a2d0ea691d7/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/longan/.gradle/caches/transforms-4/7c190b552aac81793abe7a2ebc8682e2/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/longan/.gradle/caches/transforms-4/52c3c00f38d33a3318f46de33064ae45/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/longan/.gradle/caches/transforms-4/9388853c346f429f9badfaa4aa440bda/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.1.0] /Users/longan/.gradle/caches/transforms-4/2071cac0f8428c4fb0d643fa1cb86a8b/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/longan/.gradle/caches/transforms-4/142bdaf122bd8f54f8af70575d4cd96d/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /Users/longan/.gradle/caches/transforms-4/749d104e8f2ceabb73b2b5f3039e47a4/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /Users/longan/.gradle/caches/transforms-4/b813ef0c6afb2840d6c8079aeb036fda/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /Users/longan/.gradle/caches/transforms-4/e481e0b1a549cb927bc102ecaf6238f2/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /Users/longan/.gradle/caches/transforms-4/853fa53ad17fac25a8386770e91097ec/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /Users/longan/.gradle/caches/transforms-4/b3f92154d957e30183d68ad59eb6ecd6/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/longan/.gradle/caches/transforms-4/eaab44200b20a86308d02cb42ed5e3d1/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/longan/.gradle/caches/transforms-4/5ff64d7c8cf23353a364fd2f4cdde660/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/longan/.gradle/caches/transforms-4/9e84f02f932fbae22aee9a955129ef09/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/longan/.gradle/caches/transforms-4/6d63a11e0cf9b3ee5efb4fa6d66ab549/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/longan/.gradle/caches/transforms-4/2e44fb59360f1fd475f5972c40d642f0/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/longan/.gradle/caches/transforms-4/2d178526ccb7ea4ff200b61111387938/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/longan/.gradle/caches/transforms-4/04fb0609b8768abaf7c3e18e172b6ada/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/longan/.gradle/caches/transforms-4/9a15327a5d9fcf79108cfffc4aba9c5e/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/longan/.gradle/caches/transforms-4/69c702b9ad19d5aaa9568e2785d2ea33/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/longan/.gradle/caches/transforms-4/f203e43120323ac7f592ca75233bf8eb/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/longan/.gradle/caches/transforms-4/f2d0270059d2f241f7ad5add5ebbc102/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/longan/.gradle/caches/transforms-4/7a3a35054f4f9e21b09387a668c07648/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:3:5-66
+	android:name
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:3:22-64
+application
+ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:4:5-20:19
+INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:4:5-20:19
+MERGED from [com.google.android.material:material:1.12.0] /Users/longan/.gradle/caches/transforms-4/cb6b45034b8d07e691792fdf739993e2/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.12.0] /Users/longan/.gradle/caches/transforms-4/cb6b45034b8d07e691792fdf739993e2/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/longan/.gradle/caches/transforms-4/7017deb996edc4e53d195691b9c78339/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/longan/.gradle/caches/transforms-4/7017deb996edc4e53d195691b9c78339/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/longan/.gradle/caches/transforms-4/2d178526ccb7ea4ff200b61111387938/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/longan/.gradle/caches/transforms-4/2d178526ccb7ea4ff200b61111387938/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/longan/.gradle/caches/transforms-4/04fb0609b8768abaf7c3e18e172b6ada/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/longan/.gradle/caches/transforms-4/04fb0609b8768abaf7c3e18e172b6ada/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:7:9-54
+	android:icon
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:6:9-43
+	android:allowBackup
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:5:9-35
+	android:theme
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:9:9-49
+activity#com.jiuji.paipan.MainActivity
+ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:11:9-19:20
+	android:windowSoftInputMode
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:14:13-55
+	android:exported
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:13:13-36
+	android:name
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:12:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:15:13-18:29
+action#android.intent.action.MAIN
+ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:16:17-68
+	android:name
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:17:17-76
+	android:name
+		ADDED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml:17:27-74
+uses-sdk
+INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml
+INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml
+MERGED from [com.google.android.material:material:1.12.0] /Users/longan/.gradle/caches/transforms-4/cb6b45034b8d07e691792fdf739993e2/transformed/material-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.12.0] /Users/longan/.gradle/caches/transforms-4/cb6b45034b8d07e691792fdf739993e2/transformed/material-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/longan/.gradle/caches/transforms-4/7017deb996edc4e53d195691b9c78339/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/longan/.gradle/caches/transforms-4/7017deb996edc4e53d195691b9c78339/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/longan/.gradle/caches/transforms-4/a5f5b7649693d256996803e1a33aa67c/transformed/jetified-appcompat-resources-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/longan/.gradle/caches/transforms-4/a5f5b7649693d256996803e1a33aa67c/transformed/jetified-appcompat-resources-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] /Users/longan/.gradle/caches/transforms-4/52b9e3469e77340b65a09f33fb0e7a65/transformed/appcompat-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] /Users/longan/.gradle/caches/transforms-4/52b9e3469e77340b65a09f33fb0e7a65/transformed/appcompat-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /Users/longan/.gradle/caches/transforms-4/9e4608e2ac2ba2c122c44784d05da6bf/transformed/jetified-emoji2-views-helper-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /Users/longan/.gradle/caches/transforms-4/9e4608e2ac2ba2c122c44784d05da6bf/transformed/jetified-emoji2-views-helper-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/longan/.gradle/caches/transforms-4/27e40364376aaf102ea2cd0142871bf4/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/longan/.gradle/caches/transforms-4/27e40364376aaf102ea2cd0142871bf4/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/longan/.gradle/caches/transforms-4/490a945d89655558cc069d2c17fce1a0/transformed/fragment-1.5.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/longan/.gradle/caches/transforms-4/490a945d89655558cc069d2c17fce1a0/transformed/fragment-1.5.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.8.0] /Users/longan/.gradle/caches/transforms-4/5bc7dde944472edbe246361ec567967e/transformed/jetified-activity-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.0] /Users/longan/.gradle/caches/transforms-4/5bc7dde944472edbe246361ec567967e/transformed/jetified-activity-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/longan/.gradle/caches/transforms-4/8ccabf245005f5cfe83966550e9cdf9e/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/longan/.gradle/caches/transforms-4/8ccabf245005f5cfe83966550e9cdf9e/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/longan/.gradle/caches/transforms-4/b8056624ca4bc526a20a33f51b09edfc/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/longan/.gradle/caches/transforms-4/b8056624ca4bc526a20a33f51b09edfc/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.5.0] /Users/longan/.gradle/caches/transforms-4/426e365bac99f63499d55b985b14b034/transformed/transition-1.5.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.5.0] /Users/longan/.gradle/caches/transforms-4/426e365bac99f63499d55b985b14b034/transformed/transition-1.5.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/longan/.gradle/caches/transforms-4/3edf7b2f6837dac67b44ed23e51c9908/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/longan/.gradle/caches/transforms-4/3edf7b2f6837dac67b44ed23e51c9908/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/longan/.gradle/caches/transforms-4/bc5011b56f6448b86970ac55cfda66a0/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/longan/.gradle/caches/transforms-4/bc5011b56f6448b86970ac55cfda66a0/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/longan/.gradle/caches/transforms-4/495005379d4a1cf44f5e02c7e3236ab9/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/longan/.gradle/caches/transforms-4/495005379d4a1cf44f5e02c7e3236ab9/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/longan/.gradle/caches/transforms-4/57ea081e698c6d91da0c9a2d0ea691d7/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/longan/.gradle/caches/transforms-4/57ea081e698c6d91da0c9a2d0ea691d7/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/longan/.gradle/caches/transforms-4/7c190b552aac81793abe7a2ebc8682e2/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/longan/.gradle/caches/transforms-4/7c190b552aac81793abe7a2ebc8682e2/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/longan/.gradle/caches/transforms-4/52c3c00f38d33a3318f46de33064ae45/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/longan/.gradle/caches/transforms-4/52c3c00f38d33a3318f46de33064ae45/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/longan/.gradle/caches/transforms-4/9388853c346f429f9badfaa4aa440bda/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/longan/.gradle/caches/transforms-4/9388853c346f429f9badfaa4aa440bda/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/longan/.gradle/caches/transforms-4/2071cac0f8428c4fb0d643fa1cb86a8b/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/longan/.gradle/caches/transforms-4/2071cac0f8428c4fb0d643fa1cb86a8b/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/longan/.gradle/caches/transforms-4/142bdaf122bd8f54f8af70575d4cd96d/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/longan/.gradle/caches/transforms-4/142bdaf122bd8f54f8af70575d4cd96d/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /Users/longan/.gradle/caches/transforms-4/749d104e8f2ceabb73b2b5f3039e47a4/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /Users/longan/.gradle/caches/transforms-4/749d104e8f2ceabb73b2b5f3039e47a4/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /Users/longan/.gradle/caches/transforms-4/b813ef0c6afb2840d6c8079aeb036fda/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /Users/longan/.gradle/caches/transforms-4/b813ef0c6afb2840d6c8079aeb036fda/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /Users/longan/.gradle/caches/transforms-4/e481e0b1a549cb927bc102ecaf6238f2/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /Users/longan/.gradle/caches/transforms-4/e481e0b1a549cb927bc102ecaf6238f2/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /Users/longan/.gradle/caches/transforms-4/853fa53ad17fac25a8386770e91097ec/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /Users/longan/.gradle/caches/transforms-4/853fa53ad17fac25a8386770e91097ec/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /Users/longan/.gradle/caches/transforms-4/b3f92154d957e30183d68ad59eb6ecd6/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /Users/longan/.gradle/caches/transforms-4/b3f92154d957e30183d68ad59eb6ecd6/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/longan/.gradle/caches/transforms-4/eaab44200b20a86308d02cb42ed5e3d1/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/longan/.gradle/caches/transforms-4/eaab44200b20a86308d02cb42ed5e3d1/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/longan/.gradle/caches/transforms-4/5ff64d7c8cf23353a364fd2f4cdde660/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/longan/.gradle/caches/transforms-4/5ff64d7c8cf23353a364fd2f4cdde660/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/longan/.gradle/caches/transforms-4/9e84f02f932fbae22aee9a955129ef09/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/longan/.gradle/caches/transforms-4/9e84f02f932fbae22aee9a955129ef09/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/longan/.gradle/caches/transforms-4/6d63a11e0cf9b3ee5efb4fa6d66ab549/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/longan/.gradle/caches/transforms-4/6d63a11e0cf9b3ee5efb4fa6d66ab549/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/longan/.gradle/caches/transforms-4/2e44fb59360f1fd475f5972c40d642f0/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/longan/.gradle/caches/transforms-4/2e44fb59360f1fd475f5972c40d642f0/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/longan/.gradle/caches/transforms-4/2d178526ccb7ea4ff200b61111387938/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/longan/.gradle/caches/transforms-4/2d178526ccb7ea4ff200b61111387938/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/longan/.gradle/caches/transforms-4/04fb0609b8768abaf7c3e18e172b6ada/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/longan/.gradle/caches/transforms-4/04fb0609b8768abaf7c3e18e172b6ada/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/longan/.gradle/caches/transforms-4/9a15327a5d9fcf79108cfffc4aba9c5e/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/longan/.gradle/caches/transforms-4/9a15327a5d9fcf79108cfffc4aba9c5e/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/longan/.gradle/caches/transforms-4/69c702b9ad19d5aaa9568e2785d2ea33/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/longan/.gradle/caches/transforms-4/69c702b9ad19d5aaa9568e2785d2ea33/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/longan/.gradle/caches/transforms-4/f203e43120323ac7f592ca75233bf8eb/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/longan/.gradle/caches/transforms-4/f203e43120323ac7f592ca75233bf8eb/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/longan/.gradle/caches/transforms-4/f2d0270059d2f241f7ad5add5ebbc102/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/longan/.gradle/caches/transforms-4/f2d0270059d2f241f7ad5add5ebbc102/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/longan/.gradle/caches/transforms-4/7a3a35054f4f9e21b09387a668c07648/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/longan/.gradle/caches/transforms-4/7a3a35054f4f9e21b09387a668c07648/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/longan/Downloads/JiujiPaipan/app/src/main/AndroidManifest.xml
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/longan/.gradle/caches/transforms-4/04fb0609b8768abaf7c3e18e172b6ada/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/longan/.gradle/caches/transforms-4/04fb0609b8768abaf7c3e18e172b6ada/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/longan/.gradle/caches/transforms-4/dbe3f9899f08a44b3d0847c3117a3928/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:30:17-75
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+permission#com.jiuji.paipan.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+uses-permission#com.jiuji.paipan.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/longan/.gradle/caches/transforms-4/9f430c5cf5b22897e0cb6641b0aa4eec/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/longan/.gradle/caches/transforms-4/336c2864778633ad7651b7b8f4d4bae9/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/longan/.gradle/caches/transforms-4/f56b926369aab8c675f78532d95de881/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92

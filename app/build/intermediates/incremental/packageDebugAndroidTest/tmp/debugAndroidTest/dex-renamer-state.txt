@@ -1,0 +1,4 @@
+#Mon Jun 15 15:40:01 HKT 2026
+base.0=/Users/longan/Downloads/JiujiPaipan/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
+path.0=0/classes.dex
+renamed.0=classes.dex
