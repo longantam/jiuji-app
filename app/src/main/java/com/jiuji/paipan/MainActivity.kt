@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -24,17 +25,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pagePaipan: ScrollView
     private lateinit var pageZiwu: ScrollView
     private lateinit var pageHistory: LinearLayout
+    private lateinit var pageAnalysis: ScrollView   // NEW: 調治分析 tab
 
     // --- Tab views ---
     private lateinit var tabPaipan: View
     private lateinit var tabZiwu: View
     private lateinit var tabHistory: View
+    private lateinit var tabAnalysis: View           // NEW
     private lateinit var tabPaipanLabel: TextView
     private lateinit var tabZiwuLabel: TextView
     private lateinit var tabHistoryLabel: TextView
+    private lateinit var tabAnalysisLabel: TextView  // NEW
     private lateinit var tabPaipanLine: View
     private lateinit var tabZiwuLine: View
     private lateinit var tabHistoryLine: View
+    private lateinit var tabAnalysisLine: View       // NEW
     private lateinit var tvTabTitle: TextView
 
     // --- Result views ---
@@ -80,14 +85,24 @@ class MainActivity : AppCompatActivity() {
     private lateinit var historyList: LinearLayout
     private lateinit var btnClearHistory: Button
 
+    // --- Analysis views (built dynamically) ---
+    private lateinit var analysisContent: LinearLayout
+    private lateinit var analysisEmptyHint: View
+
     private var lastResult: PaipanEngine.PaipanResult? = null
     private var currentTab = 0
 
     // accent / muted colours
-    private val COL_GOLD   = Color.parseColor("#C9A227")
-    private val COL_MUTED  = Color.parseColor("#3E3C38")
-    private val COL_ACTIVE = Color.parseColor("#C9A227")
+    private val COL_GOLD    = Color.parseColor("#C9A227")
+    private val COL_MUTED   = Color.parseColor("#3E3C38")
+    private val COL_ACTIVE  = Color.parseColor("#C9A227")
     private val COL_LINE_OFF = Color.parseColor("#2A2820")
+    private val COL_BG_CARD = Color.parseColor("#191813")
+    private val COL_BG_ROW  = Color.parseColor("#222018")
+    private val COL_TEAL    = Color.parseColor("#3E8080")
+    private val COL_RED     = Color.parseColor("#A04040")
+    private val COL_LABEL   = Color.parseColor("#6A6050")
+    private val COL_VALUE   = Color.parseColor("#D4C090")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -161,6 +176,87 @@ class MainActivity : AppCompatActivity() {
         historyEmptyHint = findViewById(R.id.historyEmptyHint)
         historyList      = findViewById(R.id.historyList)
         btnClearHistory  = findViewById(R.id.btnClearHistory)
+
+        // --- Build Analysis Tab programmatically ---
+        buildAnalysisTab()
+    }
+
+    // ── BUILD ANALYSIS TAB ─────────────────────────────────────────────────────
+
+    private fun buildAnalysisTab() {
+        // ScrollView wrapper
+        val sv = ScrollView(this).apply {
+            id = View.generateViewId()
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+            )
+            visibility = View.GONE
+        }
+        pageAnalysis = sv
+
+        val inner = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(dp(16), dp(12), dp(16), dp(32))
+        }
+        sv.addView(inner)
+
+        // Empty hint
+        val hint = TextView(this).apply {
+            text = "請先在「時空排盤」Tab 輸入日期並計算"
+            textSize = 14f
+            setTextColor(COL_MUTED)
+            gravity = Gravity.CENTER
+            setPadding(dp(24), dp(48), dp(24), 0)
+            visibility = View.VISIBLE
+        }
+        analysisEmptyHint = hint
+        inner.addView(hint)
+
+        // Dynamic content container
+        val content = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            visibility = View.GONE
+        }
+        analysisContent = content
+        inner.addView(content)
+
+        // Tab button (programmatic)
+        val tabBtn = LinearLayout(this).apply {
+            id = View.generateViewId()
+            orientation = LinearLayout.VERTICAL
+            gravity = Gravity.CENTER_HORIZONTAL
+            setPadding(0, 0, 0, 0)
+        }
+        tabAnalysis = tabBtn
+
+        val tabLabel = TextView(this).apply {
+            text = "調治分析"
+            textSize = 13f
+            setTextColor(COL_MUTED)
+            gravity = Gravity.CENTER
+            setPadding(dp(16), dp(10), dp(16), dp(6))
+        }
+        tabAnalysisLabel = tabLabel
+        tabBtn.addView(tabLabel)
+
+        val tabLine = View(this).apply {
+            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(2))
+            setBackgroundColor(COL_LINE_OFF)
+        }
+        tabAnalysisLine = tabLine
+        tabBtn.addView(tabLine)
+
+        // Attach to tab bar and page container
+        val tabBar = findViewById<LinearLayout>(R.id.tabBar)
+        tabBar.addView(tabBtn, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f))
+
+        val pageRoot = findViewById<LinearLayout>(R.id.pageRoot)
+        pageRoot.addView(sv, LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f
+        ))
+
+        tabBtn.setOnClickListener { switchTab(3) }
     }
 
     private fun setupListeners() {
@@ -192,19 +288,23 @@ class MainActivity : AppCompatActivity() {
         pagePaipan.visibility  = if (tab == 0) View.VISIBLE else View.GONE
         pageZiwu.visibility    = if (tab == 1) View.VISIBLE else View.GONE
         pageHistory.visibility = if (tab == 2) View.VISIBLE else View.GONE
+        pageAnalysis.visibility = if (tab == 3) View.VISIBLE else View.GONE
 
         setTabActive(tabPaipanLabel,  tabPaipanLine,  tab == 0)
         setTabActive(tabZiwuLabel,    tabZiwuLine,    tab == 1)
         setTabActive(tabHistoryLabel, tabHistoryLine, tab == 2)
+        setTabActive(tabAnalysisLabel, tabAnalysisLine, tab == 3)
 
         tvTabTitle.text = when (tab) {
             1 -> "子午流注針法"
             2 -> "歷史排盤檔案"
+            3 -> "應象調治分析"
             else -> "時空排盤"
         }
 
         if (tab == 1) refreshZiwu()
         if (tab == 2) refreshHistoryTab()
+        if (tab == 3) refreshAnalysis()
     }
 
     private fun setTabActive(label: TextView, line: View, active: Boolean) {
@@ -254,6 +354,7 @@ class MainActivity : AppCompatActivity() {
         resultSection.visibility = View.VISIBLE
         pagePaipan.post { pagePaipan.smoothScrollTo(0, resultSection.top) }
         if (currentTab == 1) refreshZiwu()
+        if (currentTab == 3) refreshAnalysis()
 
         // Save to history
         HistoryStore.save(this, y, m, d, h, mn, result)
@@ -290,6 +391,141 @@ class MainActivity : AppCompatActivity() {
         d.text = desc
         v.alpha = if (faded) 0.35f else 1f
         v.setTextColor(if (faded) Color.parseColor("#888888") else COL_GOLD)
+    }
+
+    // ── ANALYSIS TAB ──────────────────────────────────────────────────────────
+
+    private fun refreshAnalysis() {
+        val r = lastResult
+        if (r == null) {
+            analysisEmptyHint.visibility = View.VISIBLE
+            analysisContent.visibility   = View.GONE
+            return
+        }
+        analysisEmptyHint.visibility = View.GONE
+        analysisContent.visibility   = View.VISIBLE
+        analysisContent.removeAllViews()
+
+        val summary = r.summary()
+        val ar = AnalysisEngine.analyze(summary)
+
+        // ── 時空摘要 header
+        addSectionHeader("時空摘要")
+        addInfoRow("排盤", summary, COL_GOLD)
+
+        // ── 應時失常 / 應時不足
+        if (ar.shichang.isNotEmpty() || ar.buzu.isNotEmpty()) {
+            addSectionHeader("應時異常")
+            if (ar.shichang.isNotEmpty())
+                addInfoRow("應時失常（天干）", ar.shichang.joinToString("  "), COL_RED)
+            if (ar.buzu.isNotEmpty())
+                addInfoRow("應時不足（地支）", ar.buzu.joinToString("  "), COL_TEAL)
+        }
+
+        // ── 病象分析
+        addSectionHeader("病象分析")
+        addInfoRow("病因", ar.bingYin,   COL_VALUE)
+        addInfoRow("病症", ar.bingZheng, COL_VALUE)
+        addInfoRow("病機", ar.bingJi,    COL_VALUE)
+        addInfoRow("病位", ar.bingWei,   COL_VALUE)
+
+        // ── 調治原則
+        addSectionHeader("調治原則")
+        ar.zhiZe.split("\n").filter { it.isNotBlank() }.forEach { line ->
+            addInfoRow("", line, COL_GOLD)
+        }
+
+        // ── 四行療法提示
+        if (ar.fourLineHints.isNotEmpty()) {
+            addSectionHeader("四行療法對應")
+            ar.fourLineHints.forEach { hint ->
+                addInfoRow("", hint, COL_VALUE)
+            }
+        }
+
+        // ── 干支關聯明細
+        if (ar.relations.isNotEmpty()) {
+            addSectionHeader("干支關聯明細")
+            ar.relations.forEach { rel ->
+                val typeLabel = when (rel.type) {
+                    AnalysisEngine.RelationType.TONG_GAN -> "同干"
+                    AnalysisEngine.RelationType.YI_GAN   -> "異干"
+                    AnalysisEngine.RelationType.TONG_ZHI -> "同支"
+                    AnalysisEngine.RelationType.YI_ZHI   -> "異支"
+                    AnalysisEngine.RelationType.KE_NI    -> "克逆"
+                }
+                val col = when (rel.type) {
+                    AnalysisEngine.RelationType.KE_NI  -> COL_RED
+                    AnalysisEngine.RelationType.TONG_GAN, AnalysisEngine.RelationType.TONG_ZHI -> COL_TEAL
+                    else -> COL_LABEL
+                }
+                addInfoRow("${rel.poleLabel}【$typeLabel】",
+                    "${rel.humanPole} ↔ ${rel.otherPole}", col)
+            }
+        }
+
+        // ── 防變提示
+        addSectionHeader("防變提示")
+        addInfoRow("", ar.fangBian, Color.parseColor("#A08040"))
+    }
+
+    // ── Analysis helper views ──────────────────────────────────────────────────
+
+    private fun addSectionHeader(title: String) {
+        val tv = TextView(this).apply {
+            text = title
+            textSize = 11f
+            setTextColor(COL_MUTED)
+            setPadding(dp(2), dp(16), 0, dp(4))
+            letterSpacing = 0.12f
+        }
+        analysisContent.addView(tv)
+
+        val divider = View(this).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, dp(1))
+            setBackgroundColor(Color.parseColor("#2A2820"))
+        }
+        analysisContent.addView(divider)
+    }
+
+    private fun addInfoRow(label: String, value: String, valueColor: Int) {
+        val row = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+            setBackgroundColor(COL_BG_ROW)
+            setPadding(dp(12), dp(10), dp(12), dp(10))
+            val lp = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            lp.topMargin = dp(2)
+            layoutParams = lp
+        }
+
+        if (label.isNotEmpty()) {
+            val tvLabel = TextView(this).apply {
+                text = label
+                textSize = 11f
+                setTextColor(COL_LABEL)
+                setPadding(0, 0, dp(10), 0)
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+            }
+            row.addView(tvLabel)
+        }
+
+        val tvValue = TextView(this).apply {
+            text = value
+            textSize = 13f
+            setTextColor(valueColor)
+            layoutParams = LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f
+            )
+        }
+        row.addView(tvValue)
+        analysisContent.addView(row)
     }
 
     // ── ZIWU ──────────────────────────────────────────────────────────────────
@@ -351,7 +587,7 @@ class MainActivity : AppCompatActivity() {
         for (rec in records) {
             val card = LinearLayout(this).apply {
                 orientation = LinearLayout.VERTICAL
-                setBackgroundColor(Color.parseColor("#191813"))
+                setBackgroundColor(COL_BG_CARD)
                 setPadding(dp(14), dp(12), dp(14), dp(12))
                 val lp = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
@@ -361,10 +597,9 @@ class MainActivity : AppCompatActivity() {
                 layoutParams = lp
             }
 
-            // top row: date label + saved-at + delete button
             val topRow = LinearLayout(this).apply {
                 orientation = LinearLayout.HORIZONTAL
-                gravity = android.view.Gravity.CENTER_VERTICAL
+                gravity = Gravity.CENTER_VERTICAL
             }
             val tvDate = TextView(this).apply {
                 text = rec.inputLabel
@@ -395,7 +630,6 @@ class MainActivity : AppCompatActivity() {
             topRow.addView(tvSaved)
             topRow.addView(btnDel)
 
-            // summary line
             val tvSum = TextView(this).apply {
                 text = rec.summary
                 textSize = 12f
@@ -404,7 +638,6 @@ class MainActivity : AppCompatActivity() {
                 letterSpacing = 0.04f
             }
 
-            // key values row
             val valRow = LinearLayout(this).apply {
                 orientation = LinearLayout.HORIZONTAL
             }
@@ -416,7 +649,7 @@ class MainActivity : AppCompatActivity() {
             ).forEach { (label, value) ->
                 val cell = LinearLayout(this).apply {
                     orientation = LinearLayout.VERTICAL
-                    setBackgroundColor(Color.parseColor("#222018"))
+                    setBackgroundColor(COL_BG_ROW)
                     setPadding(dp(10), dp(8), dp(10), dp(8))
                     val lp = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
                     lp.marginEnd = dp(4)
@@ -438,7 +671,6 @@ class MainActivity : AppCompatActivity() {
                 valRow.addView(cell)
             }
 
-            // lunar note
             val tvLun = TextView(this).apply {
                 text = rec.lunarStr
                 textSize = 11f
