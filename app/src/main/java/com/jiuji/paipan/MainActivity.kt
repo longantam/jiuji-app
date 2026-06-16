@@ -429,14 +429,6 @@ class MainActivity : AppCompatActivity() {
         addSectionHeader("時空摘要")
         addInfoRow("排盤", summary, COL_GOLD)
 
-        // 應時異常
-        if (ar.shichang.isNotEmpty() || ar.buzu.isNotEmpty()) {
-            addSectionHeader("應時異常")
-            if (ar.shichang.isNotEmpty())
-                addInfoRow("應時失常（天干）", ar.shichang.joinToString("  "), COL_RED)
-            if (ar.buzu.isNotEmpty())
-                addInfoRow("應時不足（地支）", ar.buzu.joinToString("  "), COL_TEAL)
-        }
 
         // 病象分析
         addSectionHeader("病象分析")
