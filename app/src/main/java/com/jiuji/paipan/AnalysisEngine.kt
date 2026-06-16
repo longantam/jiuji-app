@@ -238,7 +238,7 @@ object AnalysisEngine {
                     if (hits.any { it.first == nG }) "年干${nG}" else ""
                 ).filter { it.isNotEmpty() }.joinToString("/")
                 zhiZeLines.add("${counter}.時干${sG}關聯${oStr}失常，則時支${sZ}亦應對應地支不足，以${mStr}調治。")
-                counter++
+                counter += 1
             }
         }
 
@@ -271,7 +271,7 @@ object AnalysisEngine {
                     }
                 }.joinToString("/")
                 zhiZeLines.add("${counter}.時支${sZ}關聯${oStr}不足，則時干${sG}亦應時失常，以${mStr}調治。")
-                counter++
+                counter += 1
             }
         }
 
@@ -296,7 +296,7 @@ object AnalysisEngine {
                     if (hits.any { it.first == nG }) "年干${nG}" else ""
                 ).filter { it.isNotEmpty() }.joinToString("/")
                 zhiZeLines.add("${counter}.日干${rG}關聯${oStr}失常，則日支${rZ}亦應地支不足，以${mStr}調治。")
-                counter++
+                counter += 1
             }
         }
 
@@ -322,7 +322,8 @@ object AnalysisEngine {
                     if (hits.any { it.first == nZ }) "年支${nZ}" else ""
                 ).filter { it.isNotEmpty() }.joinToString("/")
                 zhiZeLines.add("${counter}.日支${rZ}關聯${oStr}不足，則日干${rG}亦應天干失常，以${mStr}調治。")
-                counter++
+                @Suppress("UNUSED_VALUE")
+                counter += 1
             }
         }
 
@@ -343,13 +344,11 @@ object AnalysisEngine {
         val fangBianList = mutableListOf<String>()
         for (zh in allZhi) {
             for (cg in cangGan(zh)) {
-                // 藏干顯於其他地支
                 val xian = TG_XIAN_ZHI[cg] ?: emptyList()
                 if (xian.any { it in allZhi && it != zh }) {
                     val msg = "${cg}藏於${zh}，已顯於地支，謹防傳變"
                     if (msg !in fangBianList) fangBianList.add(msg)
                 }
-                // 藏干直接出現於天干三極
                 if (cg in allGan) {
                     val msg = "${cg}藏於${zh}，已顯於天干，謹防傳變"
                     if (msg !in fangBianList) fangBianList.add(msg)
