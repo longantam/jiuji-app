@@ -1,40 +1,47 @@
 package com.jiuji.paipan
 
 /**
- * 應象時空調治分析引擎 v5
- * 修正規則：
- * - 病因：時/日干支 關聯 年/月/大/中/小段極干支 失常（克逆）或同干/同支
- *   格式：「時干辛與月干丙失常（克逆）；日干乙與年干乙同干」
- * - 病症：日極干支症（如：乙酉症）
- * - 病機：時極干支病機（如：辛巳病機）—— 對應時極完整干支
- * - 病位：大刻完整干支位（如：辛巳位）—— 對應大刻位置
+ * 應象時空調治分析引擎 v6
+ *
+ * 治則合併規則：
+ * 1. 時支關聯小段極/大段極→合併為一句
+ *    「時支 X 關聯 A/B 不足，則時干 Y 亦應時失常。
+ *    故分別以『同支宜固』和『克逆宜生』調治。」
+ * 2. 時干關聯月/年干→合併為一句
+ *    「時干 Y 關聯月/年干 A/B 失常，則時支 X 亦應月/年支 a/b 不足。
+ *    故分別以『...』和『...』調治。」
+ * 3. 日干關聯年干
+ *    「日干 X 應年干 Y 失常，則日支 a 亦應年支 b 不足。
+ *    故以『同干宜養』調治。」
  */
 object AnalysisEngine {
 
-    // 天干克逆表：key 被 value 所克
-    private val TG_KE: Map<String, String> = mapOf(
-        "甲" to "庚", "乙" to "辛", "丙" to "壬", "丁" to "癸",
-        "戊" to "戊", "己" to "己",
-        "庚" to "甲", "辛" to "乙", "壬" to "丙", "癸" to "丁"
+    // 天干克逆：對（乙-辛, 丙-壬, 丁-癸, 甲-庚）
+    private val TG_CHONG = setOf(
+        setOf("乙", "辛"), setOf("丙", "壬"), setOf("丁", "癸"), setOf("甲", "庚")
     )
 
-    // 地支克逆表：key 被 value 所克
-    private val DZ_KE: Map<String, String> = mapOf(
-        "子" to "午", "丑" to "未", "寅" to "申", "卯" to "酉",
-        "辰" to "戌", "巳" to "亥", "午" to "子", "未" to "丑",
-        "申" to "寅", "酉" to "卯", "戌" to "辰", "亥" to "巳"
+    // 地支克逆：對（子-午, 丑-未, 寅-申, 卯-酉, 辰-戌, 巳-亥）
+    private val DZ_CHONG = setOf(
+        setOf("子", "午"), setOf("丑", "未"), setOf("寅", "申"),
+        setOf("卯", "酉"), setOf("辰", "戌"), setOf("巳", "亥")
     )
+
+    private fun isTgKe(a: String, b: String) = TG_CHONG.any { it == setOf(a, b) }
+    private fun isDzKe(a: String, b: String) = DZ_CHONG.any { it == setOf(a, b) }
+    private fun isTgSame(a: String, b: String) = a.isNotEmpty() && a == b
+    private fun isDzSame(a: String, b: String) = a.isNotEmpty() && a == b
 
     // 地支藏干
     private fun cangGan(dz: String): List<String> = when (dz) {
         "子" -> listOf("癸")
-        "丑" -> listOf("己", "辛", "癸")
+        "丑" -> listOf("巹", "辛", "癸")
         "寅" -> listOf("甲", "丙", "戊")
         "卯" -> listOf("乙")
         "辰" -> listOf("戊", "癸", "乙")
         "巳" -> listOf("丙", "庚", "戊")
-        "午" -> listOf("丁", "己")
-        "未" -> listOf("己", "丁", "乙")
+        "午" -> listOf("丁", "巹")
+        "未" -> listOf("巹", "丁", "乙")
         "申" -> listOf("庚", "戊", "壬")
         "酉" -> listOf("辛")
         "戌" -> listOf("戊", "辛", "丁")
@@ -49,7 +56,7 @@ object AnalysisEngine {
         "丙" to listOf("巳", "寅"),
         "丁" to listOf("戌", "未"),
         "戊" to listOf("辰", "戌", "巳", "寅", "申"),
-        "己" to listOf("丑", "未", "午"),
+        "巹" to listOf("丑", "未", "午"),
         "庚" to listOf("申", "巳"),
         "辛" to listOf("丑", "酉", "戌"),
         "壬" to listOf("亥", "申"),
@@ -78,167 +85,168 @@ object AnalysisEngine {
         val relations: List<Relation> = emptyList()
     )
 
-    private fun ganRelType(h: String, o: String): String? {
-        if (h.isEmpty() || o.isEmpty()) return null
-        if (h == o) return "同干"
-        if (TG_KE[h] == o || TG_KE[o] == h) return "克逆"
-        return "異干"
-    }
-
-    private fun zhiRelType(h: String, o: String): String? {
-        if (h.isEmpty() || o.isEmpty()) return null
-        if (h == o) return "同支"
-        if (DZ_KE[h] == o || DZ_KE[o] == h) return "克逆"
-        return "異支"
-    }
-
-    private fun zhiZeFor(relType: String, humanPole: String, outerPole: String): String {
-        return when (relType) {
-            "同干" -> "同干宜養（${humanPole}與${outerPole}）"
-            "同支" -> "同支宜固（${humanPole}與${outerPole}）"
-            "克逆" -> "克逆宜生（${humanPole}與${outerPole}）"
-            "異干" -> "異干宜通（${humanPole}與${outerPole}）"
-            "異支" -> "異支宜通（${humanPole}與${outerPole}）"
-            else -> ""
+    // 輸入格式：「年極：乙未 / 月極：丙戌 / 大段：亥 / 中段：午 / 小段：火 / 日極：乙酉 / 時極：辛巳」
+    // 或簡化：「乙未 / 丙戌 / 亥 / 午 / 火 / 乙酉 / 辛巳」
+    fun analyze(input: String): AnalysisResult {
+        // 支持兩種格式：「年極：乙未」 或 「乙未」
+        val raw = input.replace("：", ":").replace("「", "").replace("」", "")
+        val parts = raw.split("/", "/ ").map {
+            it.replace("年極:", "").replace("月極:", "").replace("大段:", "")
+              .replace("中段:", "").replace("小段:", "").replace("日極:", "").replace("時極:", "")
+              .trim()
         }
-    }
+        if (parts.size < 6) return AnalysisResult("輸入不足六段", "", "", "", "", "")
 
-    fun analyze(model: String): AnalysisResult {
-        val parts = model.split(" / ").map { it.trim() }
-        if (parts.size < 6) {
-            return AnalysisResult("輸入格式錯誤", "", "", "", "", "")
-        }
+        fun g(s: String) = if (s.length >= 1) s[0].toString() else ""
+        fun z(s: String) = if (s.length >= 2) s[1].toString() else ""
+        // 對於只有一個字符的段極（如「火」「亥」），直接當地支處理
+        fun zOnly(s: String) = if (s.length == 1) s else z(s)
 
-        fun stripSuffix(s: String, vararg suffixes: String): String {
-            var r = s; for (suf in suffixes) r = r.replace(suf, ""); return r.trim()
-        }
+        val nGZ = parts[0]; val yGZ = parts[1]
+        val ddRaw = parts[2]; val zdRaw = parts[3]; val xdRaw = parts[4]
+        val rGZ  = parts[5]
+        val sGZ  = parts.getOrNull(6)?.let { if (it.isBlank() || it == "X" || it == "-") null else it }
+        val dkRaw = parts.getOrNull(7)?.let { if (it.isBlank() || it == "X" || it == "-") null else it }
 
-        val nianGZ       = parts[0]
-        val yueGZ        = parts[1]
-        val daDuanRaw    = parts.getOrNull(2) ?: "X"
-        val zhongDuanRaw = parts.getOrNull(3) ?: "X"
-        val xiaoDuanRaw  = parts.getOrNull(4) ?: "X"
-        val riGZ         = parts.getOrNull(5) ?: ""
-        val shiGZ        = parts.getOrNull(6)?.trim()
-            ?.let { if (it == "X" || it == "-" || it.isEmpty()) null else it }
-        val daKeRaw      = parts.getOrNull(7)?.trim()
-            ?.let { if (it == "X" || it == "-" || it.isEmpty()) null else it }
+        val nG = g(nGZ); val nZ = z(nGZ)
+        val yG = g(yGZ); val yZ = z(yGZ)
+        val rG = g(rGZ); val rZ = z(rGZ)
+        val sG = sGZ?.let { g(it) } ?: ""
+        val sZ = sGZ?.let { z(it) } ?: ""
 
-        fun parseDuan(raw: String): String? {
-            val s = stripSuffix(raw, "大段", "中段", "小段")
-            return if (s == "X" || s.isEmpty()) null else s
+        val ddZ = zOnly(ddRaw)   // 大段地支
+        val zdZ = zOnly(zdRaw)   // 中段地支
+        val xdZ = xdRaw.let {    // 小段地支（如「火」 → 對應巳/午 —— 这裡直接用字面）
+            if (it.length == 1) it else zOnly(it)
         }
 
-        val daDuan    = parseDuan(daDuanRaw)
-        val zhongDuan = parseDuan(zhongDuanRaw)
-        val xiaoDuan  = parseDuan(xiaoDuanRaw)
-
-        fun gan(gz: String?) = gz?.takeIf { it.length >= 1 }?.get(0)?.toString() ?: ""
-        fun zhi(gz: String?) = gz?.takeIf { it.length >= 2 }?.get(1)?.toString() ?: ""
-        fun zhiOf(s: String?): String {
-            if (s == null) return ""
-            return if (s.length == 1) s else s[1].toString()
-        }
-
-        val nGan = gan(nianGZ); val nZhi = zhi(nianGZ)
-        val yGan = gan(yueGZ);  val yZhi = zhi(yueGZ)
-        val rGan = gan(riGZ);   val rZhi = zhi(riGZ)
-        val sGan = gan(shiGZ);  val sZhi = zhi(shiGZ)
-
-        data class OuterPole(val name: String, val gan: String, val zhi: String)
-        val outerPoles = mutableListOf<OuterPole>()
-        outerPoles.add(OuterPole("年極", nGan, nZhi))
-        outerPoles.add(OuterPole("月極", yGan, yZhi))
-        daDuan?.let    { outerPoles.add(OuterPole("大段", "", zhiOf(it))) }
-        zhongDuan?.let { outerPoles.add(OuterPole("中段", "", zhiOf(it))) }
-        xiaoDuan?.let  { outerPoles.add(OuterPole("小段", "", zhiOf(it))) }
-
-        data class HumanPole(val name: String, val gan: String, val zhi: String)
-        val humanPoles = mutableListOf<HumanPole>()
-        if (rGan.isNotEmpty() || rZhi.isNotEmpty()) humanPoles.add(HumanPole("日極", rGan, rZhi))
-        if (sGan.isNotEmpty() || sZhi.isNotEmpty()) humanPoles.add(HumanPole("時極", sGan, sZhi))
-
+        // ===================== 治則生成 =====================
+        val zhiZeLines = mutableListOf<String>()
+        var counter = 1
         val bingYinParts = mutableListOf<String>()
-        val zhiZeList    = mutableListOf<String>()
         val relationList = mutableListOf<Relation>()
 
-        for (hp in humanPoles) {
-            for (op in outerPoles) {
-                if (hp.gan.isNotEmpty() && op.gan.isNotEmpty()) {
-                    val gr = ganRelType(hp.gan, op.gan)
-                    if (gr != null) {
-                        val desc = when (gr) {
-                            "同干" -> "${hp.name}干${hp.gan}與${op.name}干${op.gan}同干"
-                            "克逆" -> "${hp.name}干${hp.gan}與${op.name}干${op.gan}失常（克逆）"
-                            else   -> "${hp.name}干${hp.gan}與${op.name}干${op.gan}異干"
-                        }
-                        val rt = when (gr) {
-                            "同干" -> RelationType.TONG_GAN
-                            "克逆" -> RelationType.KE_NI_GAN
-                            else  -> RelationType.YI_GAN
-                        }
-                        if (gr == "克逆" || gr == "同干") bingYinParts.add(desc)
-                        zhiZeList.add(zhiZeFor(gr, hp.name, op.name))
-                        relationList.add(Relation(rt, hp.name, op.name, desc))
-                    }
-                }
-                if (hp.zhi.isNotEmpty() && op.zhi.isNotEmpty()) {
-                    val zr = zhiRelType(hp.zhi, op.zhi)
-                    if (zr != null) {
-                        val desc = when (zr) {
-                            "同支" -> "${hp.name}支${hp.zhi}與${op.name}支${op.zhi}同支"
-                            "克逆" -> "${hp.name}支${hp.zhi}與${op.name}支${op.zhi}失常（克逆）"
-                            else   -> "${hp.name}支${hp.zhi}與${op.name}支${op.zhi}異支"
-                        }
-                        val rt = when (zr) {
-                            "同支" -> RelationType.TONG_ZHI
-                            "克逆" -> RelationType.KE_NI_ZHI
-                            else  -> RelationType.YI_ZHI
-                        }
-                        if (zr == "克逆" || zr == "同支") bingYinParts.add(desc)
-                        zhiZeList.add(zhiZeFor(zr, hp.name, op.name))
-                        relationList.add(Relation(rt, hp.name, op.name, desc))
-                    }
-                }
+        // ---- 規則 1：時支 Z 關聯 小段極/大段極 ----
+        if (sZ.isNotEmpty()) {
+            val zhiTargets = mutableListOf<String>()  // 外極地支名稱
+            val methods   = mutableListOf<String>()   // 調治方法
+
+            // 小段極：同支宜固
+            if (xdZ.isNotEmpty() && isDzSame(sZ, xdZ)) {
+                zhiTargets.add(xdZ)
+                methods.add("同支宜固")
+                bingYinParts.add("時支${sZ}與小段極${xdZ}同支")
+                relationList.add(Relation(RelationType.TONG_ZHI, "時極", "小段", "時支${sZ}與小段極${xdZ}同支"))
+            }
+            // 小段極：克逆宜生
+            if (xdZ.isNotEmpty() && isDzKe(sZ, xdZ)) {
+                zhiTargets.add(xdZ)
+                if ("克逆宜生" !in methods) methods.add("克逆宜生")
+                bingYinParts.add("時支${sZ}與小段極${xdZ}克逆")
+                relationList.add(Relation(RelationType.KE_NI_ZHI, "時極", "小段", "時支${sZ}與小段極${xdZ}克逆"))
+            }
+            // 大段極：克逆宜生
+            if (ddZ.isNotEmpty() && isDzKe(sZ, ddZ)) {
+                zhiTargets.add("${ddZ}段極")
+                if ("克逆宜生" !in methods) methods.add("克逆宜生")
+                bingYinParts.add("時支${sZ}與大段極${ddZ}克逆")
+                relationList.add(Relation(RelationType.KE_NI_ZHI, "時極", "大段", "時支${sZ}與大段極${ddZ}克逆"))
+            }
+
+            if (zhiTargets.isNotEmpty()) {
+                val mStr = methods.joinToString("』和『", "『", "』")
+                zhiZeLines.add(
+                    "${counter}.時支${sZ}關聯${zhiTargets.joinToString("/")}不足，則時干${sG}亦應時失常。" +
+                    "故分別以${mStr}調治。"
+                )
+                counter++
             }
         }
 
-        val bingYin = bingYinParts.distinct().joinToString("；")
-            .ifEmpty { "未發現克逆失常" }
+        // ---- 規則 2：時干 G 關聯 月干/年干 ----
+        if (sG.isNotEmpty()) {
+            val ganTargets    = mutableListOf<String>()   // 外極干名稱（如「月干丙」）
+            val outerZhiNames = mutableListOf<String>()   // 外極支名稱（如「月支戌」）
+            val methods2      = mutableListOf<String>()
 
-        val bingZheng = if (riGZ.isNotEmpty()) "${riGZ}症" else "未定"
+            // 月干：同干宜養
+            if (yG.isNotEmpty() && isTgSame(sG, yG)) {
+                ganTargets.add("月干${yG}")
+                outerZhiNames.add("月支${yZ}")
+                if ("同干宜養" !in methods2) methods2.add("同干宜養")
+                bingYinParts.add("時干${sG}與月干${yG}同干")
+                relationList.add(Relation(RelationType.TONG_GAN, "時極", "月極", "時干${sG}與月干${yG}同干"))
+            }
+            // 年干：同干宜養
+            if (nG.isNotEmpty() && isTgSame(sG, nG)) {
+                ganTargets.add("年干${nG}")
+                outerZhiNames.add("年支${nZ}")
+                if ("同干宜養" !in methods2) methods2.add("同干宜養")
+                bingYinParts.add("時干${sG}與年干${nG}同干")
+                relationList.add(Relation(RelationType.TONG_GAN, "時極", "年極", "時干${sG}與年干${nG}同干"))
+            }
+            // 月干：克逆宜生
+            if (yG.isNotEmpty() && isTgKe(sG, yG)) {
+                if ("月干${yG}" !in ganTargets) ganTargets.add("月干${yG}")
+                if ("月支${yZ}" !in outerZhiNames) outerZhiNames.add("月支${yZ}")
+                if ("克逆宜生" !in methods2) methods2.add("克逆宜生")
+                bingYinParts.add("時干${sG}與月干${yG}失常（克逆）")
+                relationList.add(Relation(RelationType.KE_NI_GAN, "時極", "月極", "時干${sG}與月干${yG}克逆"))
+            }
+            // 年干：克逆宜生
+            if (nG.isNotEmpty() && isTgKe(sG, nG)) {
+                if ("年干${nG}" !in ganTargets) ganTargets.add("年干${nG}")
+                if ("年支${nZ}" !in outerZhiNames) outerZhiNames.add("年支${nZ}")
+                if ("克逆宜生" !in methods2) methods2.add("克逆宜生")
+                bingYinParts.add("時干${sG}與年干${nG}失常（克逆）")
+                relationList.add(Relation(RelationType.KE_NI_GAN, "時極", "年極", "時干${sG}與年干${nG}克逆"))
+            }
 
-        val bingJi = when {
-            shiGZ != null && shiGZ.isNotEmpty() -> "${shiGZ}病機"
-            riGZ.isNotEmpty() -> "${riGZ}為本"
-            else -> "未定"
+            if (ganTargets.isNotEmpty()) {
+                val mStr = methods2.joinToString("』和『", "『", "』")
+                zhiZeLines.add(
+                    "${counter}.時干${sG}關聯${ganTargets.joinToString("/")}失常，則時支${sZ}亦應${outerZhiNames.joinToString("/")}不足。" +
+                    "故分別以${mStr}調治。"
+                )
+                counter++
+            }
         }
 
-        val bingWei = if (daKeRaw != null && daKeRaw.isNotEmpty())
-            "${daKeRaw}位"
-        else
-            "未定"
+        // ---- 規則 3：日干 G 關聯 年干 ----
+        if (rG.isNotEmpty() && nG.isNotEmpty()) {
+            val r3methods = mutableListOf<String>()
+            var triggered = false
+            if (isTgSame(rG, nG)) { r3methods.add("同干宜養"); triggered = true; bingYinParts.add("日干${rG}與年干${nG}同干"); relationList.add(Relation(RelationType.TONG_GAN, "日極", "年極", "日干${rG}與年干${nG}同干")) }
+            if (isTgKe(rG, nG)) { if ("克逆宜生" !in r3methods) r3methods.add("克逆宜生"); triggered = true; bingYinParts.add("日干${rG}與年干${nG}失常（克逆）"); relationList.add(Relation(RelationType.KE_NI_GAN, "日極", "年極", "日干${rG}與年干${nG}克逆")) }
+            if (triggered) {
+                val mStr = r3methods.joinToString("』和『", "『", "』")
+                zhiZeLines.add(
+                    "${counter}.日干${rG}應年干${nG}失常，則日支${rZ}亦應年支${nZ}不足。故以${mStr}調治。"
+                )
+                counter++
+            }
+        }
 
-        val zhiZe = zhiZeList.distinct().filter { it.isNotEmpty() }.joinToString("\n")
-            .ifEmpty { "平調即可" }
+        // ===================== 其他字段 =====================
+        val bingYin   = bingYinParts.distinct().joinToString("；").ifEmpty { "未發現克逆失常" }
+        val bingZheng = if (rGZ.isNotEmpty()) "${rGZ}症" else "未定"
+        val bingJi    = if (sGZ != null) "${sGZ}病機" else if (rGZ.isNotEmpty()) "${rGZ}為本" else "未定"
+        val bingWei   = if (dkRaw != null) "${dkRaw}位" else "未定"
+        val zhiZe     = zhiZeLines.joinToString("\n").ifEmpty { "平調即可" }
 
+        // 防變
         val fangBianList = mutableListOf<String>()
-        val allZhi = listOfNotNull(rZhi, sZhi, nZhi, yZhi)
-            .filter { it.isNotEmpty() } +
-            listOfNotNull(daDuan, zhongDuan, xiaoDuan)
-                .map { zhiOf(it) }.filter { it.isNotEmpty() }
-
-        for (z in allZhi.distinct()) {
-            for (cg in cangGan(z)) {
+        val allZhi = listOf(rZ, sZ, nZ, yZ, ddZ, zdZ, xdZ).filter { it.isNotEmpty() && it.length == 1 }
+        for (zh in allZhi.distinct()) {
+            for (cg in cangGan(zh)) {
                 val xianZhi = TG_XIAN[cg] ?: emptyList()
                 if (xianZhi.any { it in allZhi }) {
-                    val msg = "${cg}藏於地支${z}，已顯於地支，謹防傳變"
-                    if (!fangBianList.contains(msg)) fangBianList.add(msg)
+                    val msg = "${cg}藏於地支${zh}，已顯於地支，謹防傳變"
+                    if (msg !in fangBianList) fangBianList.add(msg)
                 }
             }
         }
-        val fangBian = fangBianList.distinct().joinToString("；")
-            .ifEmpty { "暫無明顯傳變風險" }
+        val fangBian = fangBianList.distinct().joinToString("；").ifEmpty { "暫無明顯傳變風險" }
 
         return AnalysisResult(
             bingYin   = bingYin,
@@ -247,9 +255,6 @@ object AnalysisEngine {
             bingWei   = bingWei,
             zhiZe     = zhiZe,
             fangBian  = fangBian,
-            shichang  = emptyList(),
-            buzu      = emptyList(),
-            fourLineHints = emptyList(),
             relations = relationList
         )
     }
